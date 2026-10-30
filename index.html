@@ -1,0 +1,2885 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#4f46e5" />
+  <title>일본어 히라가나 50음도 & 필수 형용사 60 올인원 마스터</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #eef2ff;
+      --primary-dark: #3730a3;
+      --accent: #7c3aed;
+      --success: #10b981;
+      --success-bg: #d1fae5;
+      --warning: #f59e0b;
+      --warning-bg: #fef3c7;
+      --danger: #ef4444;
+      --danger-bg: #fee2e2;
+      --fav: #eab308;
+      --fav-bg: #fef9c3;
+      --gray-bg: #f1f5f9;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-sub: #475569;
+      --border: #e2e8f0;
+      --jp-font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-color: #cbd5e1;
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .jp {
+      font-family: var(--jp-font);
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background: var(--gray-bg);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+      padding-bottom: 78px;
+    }
+
+    /* 1. 상단 고정 헤더 & 트랙 전환 세그먼트 탭 */
+    .sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 120;
+      background: var(--primary);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    .app-header {
+      color: #fff;
+      padding: 11px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+      height: 32px;
+      padding: 0 10px;
+      border-radius: 9px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-btn:active { transform: scale(0.95); }
+
+    .app-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-badge {
+      background: rgba(255, 255, 255, 0.22);
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+
+    /* 트랙 전환 스위치 바 */
+    .track-switcher {
+      background: #312e81;
+      padding: 6px 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .track-tab {
+      border: none;
+      border-radius: 10px;
+      padding: 8px 6px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #c7d2fe;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .track-tab.active {
+      background: #ffffff;
+      color: var(--primary-dark);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    /* 화면 공통 */
+    .screen {
+      display: none;
+      padding: 14px;
+      flex: 1;
+      animation: fadeIn 0.18s ease-in-out;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-box {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 15px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+
+    /* 단축키 바 */
+    .shortcut-bar {
+      background: #1e1b4b;
+      color: #e0e7ff;
+      font-size: 0.72rem;
+      padding: 7px 11px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .kbd {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: monospace;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* 홈 배너 */
+    .hero-banner {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #fff;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 6px 16px rgba(79,70,229,0.24);
+    }
+
+    .hero-banner h2 {
+      margin: 0 0 4px 0;
+      font-size: 1.12rem;
+    }
+
+    .hero-banner p {
+      margin: 0 0 12px 0;
+      font-size: 0.8rem;
+      opacity: 0.92;
+    }
+
+    .dual-progress-row {
+      margin-bottom: 10px;
+    }
+
+    .dual-progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .progress-bar-wrap {
+      background: rgba(255,255,255,0.24);
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      background: #34d399;
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* 8대 메뉴 그리드 */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .menu-btn {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 12px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      transition: transform 0.12s, border-color 0.12s;
+    }
+
+    .menu-btn:active { transform: scale(0.97); }
+    .menu-btn:hover { border-color: var(--primary); background: #f8fafc; }
+    .menu-icon { font-size: 1.55rem; }
+    .menu-title { font-size: 0.92rem; font-weight: 800; color: var(--text-main); }
+    .menu-desc { font-size: 0.74rem; color: var(--text-sub); line-height: 1.35; }
+
+    /* 필터 칩 */
+    .tab-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .tab-chip {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-sub);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .tab-chip.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* 상태 배지 & 즐겨찾기 */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 800;
+    }
+
+    .status-unlearned { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+    .status-hard { background: var(--warning-bg); color: #b45309; border: 1px solid #fcd34d; }
+    .status-mastered { background: var(--success-bg); color: #047857; border: 1px solid #6ee7b7; }
+
+    .fav-btn {
+      background: none;
+      border: none;
+      font-size: 1.15rem;
+      cursor: pointer;
+      padding: 0 2px;
+      line-height: 1;
+    }
+
+    /* 트랙 A: 히라가나 50음도 5열 그리드 */
+    .gojuon-row-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin: 10px 0 6px 2px;
+    }
+
+    .gojuon-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .kana-tile {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 6px 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 84px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .kana-tile.empty {
+      background: transparent;
+      border: 1px dashed #cbd5e1;
+      cursor: default;
+      opacity: 0.35;
+      justify-content: center;
+    }
+
+    .kana-tile.tile-hard { border-color: #fbbf24; background: #fffbeb; }
+    .kana-tile.tile-mastered { border-color: #34d399; background: #ecfdf5; }
+
+    .kana-tile-char {
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .kana-tile-romaji {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-sub);
+    }
+
+    /* 트랙 B: 형용사 2열 그리드 (히라가나 최우선) */
+    .adj-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .adj-tile {
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .adj-tile.tile-hard { border-color: #fbbf24; background: #fffbeb; }
+    .adj-tile.tile-mastered { border-color: #34d399; background: #ecfdf5; }
+
+    .tile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .type-tag {
+      font-size: 0.66rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .tile-kana-main {
+      font-size: 1.42rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin: 2px 0;
+      line-height: 1.2;
+    }
+
+    .tile-kanji-sub {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-sub);
+    }
+
+    .tile-meaning {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-top: 5px;
+    }
+
+    /* 버튼 공통 */
+    .btn {
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: none;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: transform 0.1s;
+    }
+
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-outline { background: #fff; color: var(--text-main); border: 1px solid var(--border); }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-warning { background: var(--warning); color: #fff; }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-fav { background: var(--fav-bg); color: #854d0e; border: 1px solid #fde047; }
+    .btn-block { width: 100%; }
+
+    /* 3D 플래시카드 */
+    .flashcard-stage {
+      perspective: 1000px;
+      width: 100%;
+      height: 295px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .flashcard-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.48s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .flashcard-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .fc-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background: #fff;
+      border-radius: 20px;
+      border: 2px solid var(--border);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .fc-back {
+      transform: rotateY(180deg);
+      background: #f8fafc;
+      border-color: var(--primary);
+    }
+
+    .fc-top-bar {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .fc-main-kana {
+      font-size: 2.7rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin: 8px 0 4px;
+    }
+
+    .fc-sub-kanji {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-sub);
+    }
+
+    /* 정밀 SVG 획순 & 따라 쓰기 캔버스 */
+    .char-breakdown-bar {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 8px 0;
+    }
+
+    .char-step-chip {
+      padding: 6px 11px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .char-step-chip.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: #fff;
+      border: 2px solid #818cf8;
+      border-radius: 16px;
+      overflow: hidden;
+      touch-action: none;
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stroke-svg-layer {
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .canvas-wrapper canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      cursor: crosshair;
+    }
+
+    .stroke-status-pill {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: rgba(79, 70, 229, 0.12);
+      color: var(--primary-dark);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 8px;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .stroke-under-box {
+      background: #f8fafc;
+      border: 2px solid var(--primary-light);
+      border-radius: 14px;
+      padding: 11px 14px;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    /* 퀴즈 보기 */
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .quiz-opt-btn {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 13px;
+      padding: 13px 14px;
+      font-size: 0.96rem;
+      font-weight: 800;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .quiz-opt-btn.correct { border-color: var(--success); background: var(--success-bg); color: #065f46; }
+    .quiz-opt-btn.wrong { border-color: var(--danger); background: var(--danger-bg); color: #991b1b; }
+
+    /* 이미지 타일 키보드 */
+    .answer-slots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      min-height: 50px;
+      padding: 8px;
+      background: #f8fafc;
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .slot-box {
+      min-width: 42px;
+      height: 42px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      padding: 0 8px;
+    }
+
+    .kana-pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      justify-content: center;
+      margin: 10px 0;
+    }
+
+    .kana-key {
+      min-width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      border: 2px solid var(--primary);
+      background: #fff;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    .kana-key:active { background: var(--primary); color: #fff; }
+
+    /* 모달 */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 300;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-sheet {
+      width: 100%;
+      max-width: 480px;
+      max-height: 90vh;
+      background: #fff;
+      border-radius: 24px 24px 0 0;
+      padding: 18px 16px 28px;
+      overflow-y: auto;
+    }
+
+    .conj-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin-top: 8px;
+    }
+
+    .conj-table th, .conj-table td {
+      border: 1px solid var(--border);
+      padding: 7px 9px;
+      text-align: left;
+    }
+
+    .conj-table th { background: #f8fafc; width: 36%; color: var(--text-sub); }
+
+    /* 하단 고정 5탭 네비게이션 */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 480px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      padding: 6px 4px;
+      z-index: 200;
+    }
+
+    .nav-item {
+      border: none;
+      background: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #64748b;
+      cursor: pointer;
+      padding: 4px 2px;
+    }
+
+    .nav-item.active { color: var(--primary); }
+    .nav-item span.icon { font-size: 1.22rem; }
+  </style>
+</head>
+<body>
+
+<div class="app-shell">
+  <!-- 상단 고정 헤더 & 트랙 전환 스위치 -->
+  <div class="sticky-top">
+    <header class="app-header">
+      <div class="header-left">
+        <button class="icon-btn" id="btnBack" onclick="navigate('home')" style="display:none;">← 홈</button>
+        <h1 class="app-title" id="headerTitle">히라가나 & 형용사 마스터</h1>
+      </div>
+      <div class="header-right">
+        <span class="header-badge" id="headerBadge">진도 0%</span>
+        <button class="icon-btn" onclick="openShortcutModal()">⌨️ 단축키</button>
+      </div>
+    </header>
+    <div class="track-switcher">
+      <button class="track-tab active" id="tabTrackKana" onclick="switchTrack('kana')">🌱 히라가나 50음도 (46자)</button>
+      <button class="track-tab" id="tabTrackAdj" onclick="switchTrack('adj')">📘 필수 형용사 60선 (い·な)</button>
+    </div>
+  </div>
+
+  <!-- 1. 메인 홈 화면 -->
+  <main class="screen active" id="screen-home">
+    <div class="hero-banner">
+      <h2 id="homeBannerTitle">🌱 초보자 맞춤형 일본어 올인원 마스터</h2>
+      <p>상단 탭에서 [히라가나 50음도]와 [필수 형용사 60선]을 언제든 전환하며 학습하세요!</p>
+
+      <div class="dual-progress-row">
+        <div class="dual-progress-label">
+          <span>🌱 히라가나 50음도 (46자)</span>
+          <span id="homeKanaPercent">0 / 46 (0%)</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="homeKanaBar"></div>
+        </div>
+      </div>
+
+      <div class="dual-progress-row">
+        <div class="dual-progress-label">
+          <span>📘 필수 형용사 60선 (い·な형용사)</span>
+          <span id="homeAdjPercent">0 / 60 (0%)</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="homeAdjBar"></div>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <span id="homeStatMastered">✅ 총 암기: 0개</span>
+        <span id="homeStatFav">⭐ 즐겨찾기: 0개</span>
+        <span id="homeStatHard">🔥 복습 필요: 0개</span>
+      </div>
+    </div>
+
+    <div class="menu-grid">
+      <button class="menu-btn" onclick="navigate('table')">
+        <span class="menu-icon">📋</span>
+        <span class="menu-title">① 50음도 & 형용사 표</span>
+        <span class="menu-desc">히라가나 46자 표 & 형용사 60선 도감 확인</span>
+      </button>
+      <button class="menu-btn" onclick="navigate('flashcard')">
+        <span class="menu-icon">🃏</span>
+        <span class="menu-title">② 플래시카드 학습</span>
+        <span class="menu-desc">9가지 맞춤 모드 & ⭐즐겨찾기 집중 암기</span>
+      </button>
+      <button class="menu-btn" onclick="navigate('stroke')">
+        <span class="menu-icon">✍️</span>
+        <span class="menu-title">③ 획순 & 따라 쓰기</span>
+        <span class="menu-desc">정밀 SVG 획순 애니메이션 & 손글씨 연습</span>
+      </button>
+      <button class="menu-btn" onclick="navigate('mnemonic')">
+        <span class="menu-icon">💡</span>
+        <span class="menu-title">④ 연상 암기법 학습</span>
+        <span class="menu-desc">모양·발음 연상 스토리와 3지선다 확인 문제</span>
+      </button>
+      <button class="menu-btn" onclick="navigate('words')">
+        <span class="menu-icon">📖</span>
+        <span class="menu-title">⑤ 기초 단어 & 예문</span>
+        <span class="menu-desc">초보자용 기초 어휘·형용사 예문과 발음 듣기</span>
+      </button>
+      <button class="menu-btn" onclick="navigate('quiz')">
+        <span class="menu-icon">🎮</span>
+        <span class="menu-title">⑥ 퀴즈 및 미니게임</span>
+        <span class="menu-desc">4지선다, 60초 타임어택, 약점·즐겨찾기 훈련</span>
+      </button>
+      <button class="menu-btn" onclick="navigate('imagegame')">
+        <span class="menu-icon">🖼️</span>
+        <span class="menu-title">⑦ 이미지 문자 맞히기</span>
+        <span class="menu-desc">그림 보고 히라가나 타일 선택 또는 직접 입력</span>
+      </button>
+      <button class="menu-btn" onclick="navigate('stats')">
+        <span class="menu-icon">📊</span>
+        <span class="menu-title">⑧ 진도 & ⭐즐겨찾기</span>
+        <span class="menu-desc">정답률 통계, 오답 노트, 즐겨찾기 단어장</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- 2. 도감 표 화면 (트랙 A: 50음도 46자 / 트랙 B: 형용사 60선) -->
+  <section class="screen" id="screen-table">
+    <div class="tab-row" id="tableFilterRow"></div>
+    <div style="font-size:0.76rem; color:var(--text-sub); margin-bottom:10px;">
+      💡 타일을 누르면 <strong>상세 학습·획순·활용표</strong>가 열리고, <strong>☆</strong>를 누르면 즐겨찾기에 등록됩니다.
+    </div>
+    <div id="tableContentArea"></div>
+  </section>
+
+  <!-- 3. 플래시카드 화면 -->
+  <section class="screen" id="screen-flashcard">
+    <div class="shortcut-bar">
+      <span>⌨️ <span class="kbd">Space</span> 뒤집기</span>
+      <span><span class="kbd">←</span><span class="kbd">→</span> 이동</span>
+      <span><span class="kbd">S</span> 발음</span>
+      <span><span class="kbd">F</span> ⭐즐겨찾기</span>
+      <span><span class="kbd">1</span> 어려움 <span class="kbd">2</span>/<span class="kbd">M</span> 암기</span>
+    </div>
+
+    <div class="card-box" style="padding:12px;">
+      <div style="display:grid; grid-template-columns:1fr auto; gap:8px; align-items:center;">
+        <div>
+          <label for="fcModeSelect" style="font-size:0.76rem; font-weight:800; color:var(--text-sub);">플래시카드 모드 선택</label>
+          <select id="fcModeSelect" onchange="initFlashcards()" style="width:100%; padding:8px; border-radius:10px; border:1px solid var(--border); margin-top:4px; font-weight:700; font-size:0.84rem;">
+            <option value="kana_only">1. [기본] 히라가나 보고 발음·뜻 맞히기</option>
+            <option value="kana_with_kanji">2. [병기] 히라가나 + 작은 한자 함께 보기 (형용사)</option>
+            <option value="kr_to_kana">3. 발음·한국어 뜻 보고 히라가나 맞히기</option>
+            <option value="kanji_to_kana">4. 한자(大きい) 보고 히라가나·뜻 맞히기 (형용사)</option>
+            <option value="random">5. 전체 무작위 섞어서 복습</option>
+            <option value="fav">6. ⭐ 즐겨찾기한 항목만 집중 학습</option>
+            <option value="hard">7. 🔥 어려운 항목만 집중 복습</option>
+            <option value="unlearned">8. ⚪ 미학습 항목만 학습</option>
+            <option value="mastered">9. ✅ 암기 완료한 항목 복습</option>
+          </select>
+        </div>
+        <button class="btn btn-outline" style="margin-top:18px; padding:8px 10px;" onclick="shuffleFlashcards()">🔀 섞기</button>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:0 4px;">
+      <span id="fcCounter" style="font-size:0.86rem; font-weight:800; color:var(--text-sub);">1 / 46</span>
+      <div style="display:flex; gap:6px;">
+        <button class="btn btn-fav" id="fcFavBtn" style="padding:5px 10px; font-size:0.78rem;" onclick="toggleCurrentFCFav(event)">☆ 즐겨찾기 (F)</button>
+        <button class="btn btn-outline" style="padding:5px 10px; font-size:0.78rem;" onclick="speakCurrentFC(event)">🔊 발음 (S)</button>
+      </div>
+    </div>
+
+    <div class="flashcard-stage" onclick="flipFlashcard()">
+      <div class="flashcard-inner" id="fcInner">
+        <div class="fc-face fc-front">
+          <div class="fc-top-bar">
+            <span class="type-tag" id="fcTypeTag">히라가나</span>
+            <span class="status-pill status-unlearned" id="fcStatusBadge">⚪ 미학습</span>
+          </div>
+          <div class="fc-main-kana jp" lang="ja" id="fcFrontMain">あ</div>
+          <div class="fc-sub-kanji jp" lang="ja" id="fcFrontSub"></div>
+          <div style="font-size:0.78rem; color:#94a3b8; margin-top:8px;">터치하거나 [Space] 키를 눌러 정답 확인</div>
+        </div>
+        <div class="fc-face fc-back">
+          <div style="font-size:2rem;" id="fcBackEmoji">🍎</div>
+          <div class="jp" lang="ja" style="font-size:1.85rem; font-weight:900; color:var(--primary-dark);" id="fcBackKana">あ</div>
+          <div class="jp" lang="ja" style="font-size:0.92rem; font-weight:700; color:var(--text-sub); margin-bottom:4px;" id="fcBackSub">a [아]</div>
+          <div style="font-size:1.25rem; font-weight:900; color:var(--primary); margin-bottom:8px;" id="fcBackMeaning"></div>
+          <div style="font-size:0.78rem; color:var(--text-sub); background:#eef2ff; padding:8px 10px; border-radius:10px; line-height:1.4;" id="fcBackMnemonic"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
+      <button class="btn btn-warning" onclick="markFlashcard('hard')">🔥 아직 어려움 (1)</button>
+      <button class="btn btn-success" onclick="markFlashcard('mastered')">✅ 알고 있음 (2 / M)</button>
+    </div>
+
+    <div style="display:flex; gap:8px;">
+      <button class="btn btn-outline btn-block" onclick="moveFlashcard(-1)">◀ 이전 (←)</button>
+      <button class="btn btn-outline btn-block" onclick="moveFlashcard(1)">다음 (→) ▶</button>
+    </div>
+  </section>
+
+  <!-- 4. 획순 애니메이션 & 따라 쓰기 연습 화면 -->
+  <section class="screen" id="screen-stroke">
+    <div class="shortcut-bar">
+      <span>⌨️ <span class="kbd">Space</span> 일시정지/재생</span>
+      <span><span class="kbd">←</span><span class="kbd">→</span> 이전/다음</span>
+      <span><span class="kbd">C</span> 지우기</span>
+      <span><span class="kbd">F</span> ⭐즐겨찾기</span>
+    </div>
+
+    <div class="card-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+        <select id="strokeItemSelect" onchange="selectStrokeItem(this.value)" style="flex:1; padding:9px; border-radius:10px; border:1px solid var(--border); font-weight:700;"></select>
+        <button class="btn btn-fav" id="strokeFavBtn" onclick="toggleCurrentStrokeFav()">☆</button>
+        <button class="btn btn-outline" onclick="speakCurrentStrokeItem()">🔊</button>
+      </div>
+    </div>
+
+    <div class="card-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+        <span style="font-size:0.86rem; font-weight:800; color:var(--primary-dark);">
+          ✍️ 실제 일본어 필순 애니메이션 & 손글씨 따라 쓰기
+        </span>
+      </div>
+
+      <!-- 형용사 모드일 때 전체 단어 vs 글자별 쪼개기 칩 -->
+      <div class="char-breakdown-bar" id="strokeBreakdownBar"></div>
+
+      <div class="canvas-wrapper" id="strokeCanvasWrap">
+        <span class="stroke-status-pill" id="strokeCountBadge">총 0획</span>
+        <svg id="strokeSvgLayer" class="stroke-svg-layer" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
+        <canvas id="drawCanvas"></canvas>
+      </div>
+
+      <!-- 아래 한자 표기 & 발음·뜻 안내 박스 -->
+      <div class="stroke-under-box" id="strokeUnderBox"></div>
+
+      <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; margin-top:12px;">
+        <button class="btn btn-primary" onclick="playStrokeAnimation()">▶ 획순 애니메이션 재생</button>
+        <button class="btn btn-outline" id="btnStrokePause" onclick="togglePauseStrokeAnimation()">⏸ 일시정지 (Space)</button>
+        <button class="btn btn-outline" onclick="replayStrokeAnimation()">🔄 처음부터 다시 보기</button>
+        <button class="btn btn-danger" onclick="clearUserDrawing()">🧹 내가 쓴 획 지우기 (C)</button>
+      </div>
+
+      <div style="display:flex; gap:8px; margin-top:10px;">
+        <button class="btn btn-outline btn-block" onclick="stepStrokeItem(-1)">◀ 이전 (←)</button>
+        <button class="btn btn-outline btn-block" onclick="stepStrokeItem(1)">다음 (→) ▶</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 연상 암기법 학습 화면 -->
+  <section class="screen" id="screen-mnemonic">
+    <div class="card-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+        <select id="mnemItemSelect" onchange="renderMnemonicScreen(this.value)" style="flex:1; padding:9px; border-radius:10px; border:1px solid var(--border); font-weight:700;"></select>
+        <button class="btn btn-fav" id="mnemFavBtn" onclick="toggleCurrentMnemFav()">☆</button>
+        <button class="btn btn-outline" onclick="speakCurrentMnemItem()">🔊 발음</button>
+      </div>
+    </div>
+    <div class="card-box" id="mnemContentBox"></div>
+    <div class="card-box" id="mnemQuizBox"></div>
+  </section>
+
+  <!-- 6. 관련 기초 단어 & 형용사 예문 학습 화면 -->
+  <section class="screen" id="screen-words">
+    <div class="card-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+        <select id="wordsItemSelect" onchange="renderWordsScreen(this.value)" style="flex:1; padding:9px; border-radius:10px; border:1px solid var(--border); font-weight:700;"></select>
+        <button class="btn btn-primary" onclick="openItemDetailModal(currentTrack, currentWordsIdx)">🔍 상세·활용표</button>
+      </div>
+    </div>
+    <div id="wordsListBox"></div>
+    <div style="display:flex; gap:8px;">
+      <button class="btn btn-outline btn-block" onclick="stepWordsItem(-1)">◀ 이전 항목 (←)</button>
+      <button class="btn btn-outline btn-block" onclick="stepWordsItem(1)">다음 항목 (→) ▶</button>
+    </div>
+  </section>
+
+  <!-- 7. 퀴즈 및 미니게임 화면 -->
+  <section class="screen" id="screen-quiz">
+    <div class="shortcut-bar">
+      <span>⌨️ 숫자키 <span class="kbd">1</span> ~ <span class="kbd">4</span> 보기 선택</span>
+      <span><span class="kbd">S</span> 문제 발음 듣기</span>
+    </div>
+
+    <div class="tab-row">
+      <button class="tab-chip active" onclick="startQuizMode('gameA', this)">게임A: 히라가나 선택</button>
+      <button class="tab-chip" onclick="startQuizMode('gameB', this)">게임B: 발음·뜻 맞히기</button>
+      <button class="tab-chip" onclick="startQuizMode('gameC', this)">게임C: 60초 챌린지</button>
+      <button class="tab-chip" onclick="startQuizMode('gameD_fav', this)">⭐ 즐겨찾기 훈련</button>
+      <button class="tab-chip" onclick="startQuizMode('gameD_hard', this)">🔥 약점 집중 훈련</button>
+    </div>
+
+    <div class="card-box" style="padding:10px 14px; margin-bottom:10px;">
+      <label style="display:flex; align-items:center; gap:8px; font-size:0.8rem; font-weight:700; color:var(--text-sub); cursor:pointer;">
+        <input type="checkbox" id="chkAdaptiveQuiz" checked onchange="startQuizMode(currentQuizMode)" />
+        <span>학습 진도 맞춤 출제 (학습 중·완료 항목 및 기본 항목 우선 출제)</span>
+      </label>
+    </div>
+
+    <div class="card-box" id="quizPlayArea"></div>
+  </section>
+
+  <!-- 8. 이미지 기반 히라가나 맞히기 화면 -->
+  <section class="screen" id="screen-imagegame">
+    <div class="card-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <select id="imgPoolSelect" onchange="nextImageGameQuestion()" style="padding:6px 10px; border-radius:8px; border:1px solid var(--border); font-weight:700; font-size:0.8rem;">
+          <option value="current">현재 트랙 문제 출제</option>
+          <option value="noun20">기초 그림 명사 20선 (りんご 등)</option>
+          <option value="adj60">필수 형용사 60선 (おおきい 등)</option>
+        </select>
+        <div style="display:flex; gap:5px;">
+          <button class="tab-chip active" id="btnImgModeTile" onclick="setImgInputMode('tile')">방식A: 타일 선택</button>
+          <button class="tab-chip" id="btnImgModeKey" onclick="setImgInputMode('keyboard')">방식B: 직접 입력</button>
+        </div>
+      </div>
+
+      <div style="text-align:center; padding:14px 10px; background:#f8fafc; border-radius:16px; border:1px solid var(--border);">
+        <div style="font-size:3.4rem;" id="imgGameEmoji">🍎</div>
+        <div style="font-size:1.25rem; font-weight:900; margin-top:4px;" id="imgGamePrompt">사과</div>
+        <div class="jp" lang="ja" style="font-size:0.85rem; color:var(--text-sub); margin-top:4px;" id="imgGameHint">힌트: 3글자</div>
+      </div>
+
+      <!-- 방식 A: 타일 선택 -->
+      <div id="imgTileModeUI" style="margin-top:12px;">
+        <div class="answer-slots jp" lang="ja" id="imgAnswerSlots"></div>
+        <div class="kana-pool jp" lang="ja" id="imgKanaPool"></div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-outline btn-block" onclick="popImgTile()">⌫ 한 글자 지우기</button>
+          <button class="btn btn-outline btn-block" onclick="resetImgTiles()">초기화</button>
+          <button class="btn btn-primary btn-block" onclick="checkImgAnswer()">정답 확인</button>
+        </div>
+      </div>
+
+      <!-- 방식 B: 일본어 키보드 & 로마자 자동 변환 입력 -->
+      <div id="imgKeyModeUI" style="display:none; margin-top:12px;">
+        <input type="text" id="imgKeyboardInput" class="jp" lang="ja" placeholder="히라가나(예: りんご) 또는 로마자(ringo) 입력" style="width:100%; padding:13px; font-size:1.05rem; border-radius:12px; border:2px solid var(--primary); margin-bottom:8px;" onkeydown="if(event.key==='Enter') checkImgAnswer()" />
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-outline btn-block" onclick="convertRomajiInput()">🔤 로마자→히라가나 변환</button>
+          <button class="btn btn-primary btn-block" onclick="checkImgAnswer()">정답 제출 (Enter)</button>
+        </div>
+      </div>
+
+      <div id="imgFeedbackBox" style="margin-top:12px; display:none; padding:12px; border-radius:12px; font-weight:700;"></div>
+      <button class="btn btn-outline btn-block" style="margin-top:10px;" onclick="nextImageGameQuestion()">다음 그림 문제 (→) ▶</button>
+    </div>
+  </section>
+
+  <!-- 9. 학습 현황 & 즐겨찾기 단어장 화면 -->
+  <section class="screen" id="screen-stats">
+    <div class="card-box">
+      <h3 style="margin:0 0 10px 0; font-size:1rem;" id="statTrackHeading">📊 현재 트랙 학습 통계</h3>
+      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; text-align:center;">
+        <div style="background:#ecfdf5; padding:10px 4px; border-radius:12px;">
+          <div style="font-size:1.2rem; font-weight:900; color:#047857;" id="statMasterCount">0</div>
+          <div style="font-size:0.7rem; font-weight:700; color:#047857;">✅ 암기완료</div>
+        </div>
+        <div style="background:#fef9c3; padding:10px 4px; border-radius:12px;">
+          <div style="font-size:1.2rem; font-weight:900; color:#854d0e;" id="statFavCount">0</div>
+          <div style="font-size:0.7rem; font-weight:700; color:#854d0e;">⭐ 즐겨찾기</div>
+        </div>
+        <div style="background:#fffbeb; padding:10px 4px; border-radius:12px;">
+          <div style="font-size:1.2rem; font-weight:900; color:#b45309;" id="statHardCount">0</div>
+          <div style="font-size:0.7rem; font-weight:700; color:#b45309;">🔥 어려움</div>
+        </div>
+        <div style="background:#f1f5f9; padding:10px 4px; border-radius:12px;">
+          <div style="font-size:1.2rem; font-weight:900; color:#475569;" id="statUnlearnedCount">0</div>
+          <div style="font-size:0.7rem; font-weight:700; color:#475569;">⚪ 미학습</div>
+        </div>
+      </div>
+      <div style="margin-top:12px; font-size:0.84rem; color:var(--text-sub); line-height:1.6;" id="statQuizSummary"></div>
+    </div>
+
+    <div class="card-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:0.96rem;">⭐ 즐겨찾기 목록 (히라가나 & 형용사)</h3>
+        <button class="btn btn-outline" style="padding:4px 10px; font-size:0.75rem;" onclick="startFavReview()">플래시카드로 복습 ▶</button>
+      </div>
+      <div id="statFavList" style="font-size:0.86rem;"></div>
+    </div>
+
+    <div class="card-box">
+      <h3 style="margin:0 0 8px 0; font-size:0.96rem;">🚨 자주 틀리는 / 어려운 항목 목록</h3>
+      <div id="statWeakList" style="font-size:0.86rem;"></div>
+    </div>
+
+    <div class="card-box">
+      <h3 style="margin:0 0 8px 0; font-size:0.96rem;">⚙️ 데이터 초기화</h3>
+      <button class="btn btn-danger btn-block" onclick="resetAllUserData()">🗑️ 전체 학습 기록 및 즐겨찾기 초기화</button>
+    </div>
+  </section>
+
+  <!-- 상세 학습 모달 (히라가나 46자 & 형용사 60선 겸용) -->
+  <div class="modal-overlay" id="detailModal" onclick="closeDetailModal(event)">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <span class="type-tag" id="modalTypeTag">상세 학습</span>
+        <div style="display:flex; gap:6px;">
+          <button class="btn btn-fav" id="modalFavBtn" style="padding:5px 10px; font-size:0.78rem;" onclick="toggleFavFromModal()">☆ 즐겨찾기</button>
+          <button class="btn btn-outline" style="padding:5px 10px;" onclick="closeDetailModal()">✕ 닫기 (Esc)</button>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+        <div>
+          <div class="jp" lang="ja" id="modalMainKana" style="font-size:2.3rem; font-weight:900; color:var(--primary);">あ</div>
+          <div class="jp" lang="ja" id="modalSubText" style="font-size:0.98rem; font-weight:700; color:var(--text-sub);">a [아]</div>
+        </div>
+        <button class="btn btn-primary" onclick="speakFromModal()">🔊 발음 (S)</button>
+      </div>
+
+      <div style="font-size:1.2rem; font-weight:900; margin-bottom:12px;" id="modalMeaning"></div>
+
+      <div style="margin-bottom:12px;">
+        <div style="font-size:0.76rem; font-weight:700; color:var(--text-sub); margin-bottom:6px;">학습 상태 직접 변경</div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px;">
+          <button class="btn btn-outline" id="modalBtnUnlearned" onclick="setStatusFromModal('unlearned')">⚪ 미학습</button>
+          <button class="btn btn-outline" id="modalBtnHard" onclick="setStatusFromModal('hard')">🔥 어려움</button>
+          <button class="btn btn-outline" id="modalBtnMastered" onclick="setStatusFromModal('mastered')">✅ 암기완료</button>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+        <button class="btn btn-primary" onclick="jumpFromModal('stroke')">✍️ 획순·따라 쓰기</button>
+        <button class="btn btn-outline" onclick="jumpFromModal('mnemonic')">💡 그림·모양으로 외우기</button>
+      </div>
+
+      <div style="background:#eef2ff; padding:12px; border-radius:12px; margin-bottom:10px; font-size:0.85rem;" id="modalMnemonicBox"></div>
+      <div style="background:#f8fafc; padding:12px; border-radius:12px; border:1px solid var(--border); margin-bottom:10px; font-size:0.85rem;" id="modalWordsBox"></div>
+
+      <div id="modalConjWrap" style="display:none;">
+        <div style="font-size:0.82rem; font-weight:800; color:var(--text-sub);">📌 히라가나 중심 6단계 어미 활용표</div>
+        <table class="conj-table jp" lang="ja" id="modalConjTable"></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 키보드 단축키 안내 모달 -->
+  <div class="modal-overlay" id="shortcutModal" onclick="closeShortcutModal(event)">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 style="margin:0; font-size:1.05rem;">⌨️ 키보드 단축키 안내</h3>
+        <button class="btn btn-outline" style="padding:5px 10px;" onclick="closeShortcutModal()">✕ 닫기 (Esc)</button>
+      </div>
+      <table class="conj-table">
+        <tr><th><strong>Space</strong></th><td>플래시카드 뒤집기 / 획순 애니메이션 일시정지·재생</td></tr>
+        <tr><th><strong>← / →</strong></th><td>이전 / 다음 문자·단어로 이동</td></tr>
+        <tr><th><strong>S 키</strong></th><td>현재 문자·단어 일본어 원어민 발음 듣기 (TTS)</td></tr>
+        <tr><th><strong>F 키</strong></th><td>현재 항목 ⭐ 즐겨찾기 추가 / 해제 토글</td></tr>
+        <tr><th><strong>1 키</strong></th><td>플래시카드 '🔥 아직 어려움' / 객관식 퀴즈 1번 보기</td></tr>
+        <tr><th><strong>2 또는 M 키</strong></th><td>플래시카드 '✅ 알고 있음' / 객관식 퀴즈 2번 보기</td></tr>
+        <tr><th><strong>3 / 4 키</strong></th><td>객관식 퀴즈 3번 / 4번 보기 선택</td></tr>
+        <tr><th><strong>R 키</strong></th><td>플래시카드 무작위 섞기</td></tr>
+        <tr><th><strong>C 키</strong></th><td>따라 쓰기 캔버스 지우기</td></tr>
+        <tr><th><strong>Esc 키</strong></th><td>열려 있는 모달 닫기</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 하단 고정 5탭 네비게이션 -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-target="home" onclick="navigate('home')">
+      <span class="icon">🏠</span><span>홈</span>
+    </button>
+    <button class="nav-item" data-target="table" onclick="navigate('table')">
+      <span class="icon">📋</span><span>도감표</span>
+    </button>
+    <button class="nav-item" data-target="flashcard" onclick="navigate('flashcard')">
+      <span class="icon">🃏</span><span>플래시카드</span>
+    </button>
+    <button class="nav-item" data-target="stroke" onclick="navigate('stroke')">
+      <span class="icon">✍️</span><span>쓰기연습</span>
+    </button>
+    <button class="nav-item" data-target="stats" onclick="navigate('stats')">
+      <span class="icon">📊</span><span>진도·즐겨찾기</span>
+    </button>
+  </nav>
+</div>
+
+<script>
+  // =========================================================================
+  // 1. 트랙 A: 히라가나 50음도 (46자) 전체 데이터베이스 (표준 SVG 획순 + 연상법 + 기초 단어)
+  // =========================================================================
+  const HIRAGANA_DB = [
+    { id: 'k1', char: "あ", romaji: "a", ko: "아", row: "あ행", strokes: ["M 24 32 Q 50 30 76 28", "M 48 14 Q 45 50 47 84", "M 64 42 C 54 68 30 82 24 68 C 18 54 44 38 66 48 C 82 55 80 78 60 86"], emoji: "🍎", phrase: "사과나무 아래서 '아!(あ)'", story: "십자(+) 모양 나무 아래에 둥근 사과가 매달려 있어요. 사과를 보고 '아!(a)' 하고 외치는 모양이에요.", words: [{ jp: "あめ", romaji: "ame", ko: "비 / 사탕", emoji: "🌧️", exJp: "あめが ふる。", exKo: "비가 내린다." }, { jp: "あさ", romaji: "asa", ko: "아침", emoji: "🌅", exJp: "あさ おきる。", exKo: "아침에 일어난다." }] },
+    { id: 'k2', char: "い", romaji: "i", ko: "이", row: "あ행", strokes: ["M 30 24 C 28 50 30 72 36 80 L 44 68", "M 68 28 C 74 44 76 62 72 76"], emoji: "🦷", phrase: "나란히 서 있는 앞니 '이(い)'", story: "왼쪽 긴 획과 오른쪽 짧은 획이 가지런한 두 개의 치아(이)처럼 나란히 서 있어서 '이(i)'라고 읽어요.", words: [{ jp: "いぬ", romaji: "inu", ko: "강아지, 개", emoji: "🐶", exJp: "かわいい いぬ。", exKo: "귀여운 강아지." }, { jp: "いちご", romaji: "ichigo", ko: "딸기", emoji: "🍓", exJp: "あまい いちご。", exKo: "달콤한 딸기." }] },
+    { id: 'k3', char: "う", romaji: "u", ko: "우", row: "あ행", strokes: ["M 38 16 Q 52 20 62 24", "M 28 42 C 56 32 76 46 68 68 C 62 82 44 88 30 88"], emoji: "☂️", phrase: "비 맞으며 구부정한 '우(う)'산", story: "위쪽 점은 빗방울, 아래 곡선은 비를 피하려고 우산을 쓰고 등을 구부린 모습이에요.", words: [{ jp: "うし", romaji: "ushi", ko: "소", emoji: "🐮", exJp: "おおきい うし。", exKo: "커다란 소." }, { jp: "うみ", romaji: "umi", ko: "바다", emoji: "🌊", exJp: "あおい うみ。", exKo: "푸른 바다." }] },
+    { id: 'k4', char: "え", romaji: "e", ko: "에", row: "あ행", strokes: ["M 40 16 Q 52 20 62 24", "M 26 42 L 68 38 L 30 78 C 44 62 56 62 58 76 C 60 84 68 86 82 84"], emoji: "🏃", phrase: "'에(え)'너지 넘치게 달리는 사람!", story: "위쪽 점은 머리, 아래 지그재그 선은 다리를 뻗으며 힘차게 달리는 사람의 옆모습이에요.", words: [{ jp: "えき", romaji: "eki", ko: "역 (전철역)", emoji: "🚉", exJp: "えきへ いく。", exKo: "역으로 간다." }, { jp: "えんぴつ", romaji: "enpitsu", ko: "연필", emoji: "✏️", exJp: "えんぴつで かく。", exKo: "연필로 쓴다." }] },
+    { id: 'k5', char: "お", romaji: "o", ko: "오", row: "あ행", strokes: ["M 24 34 Q 44 32 62 30", "M 44 16 L 44 78 C 44 86 24 80 24 68 C 24 54 52 46 68 56 C 80 64 76 84 58 88", "M 74 24 Q 82 30 86 38"], emoji: "⛳", phrase: "골프공이 홀에 쏙! '오~(お)'", story: "오른쪽 위의 작은 점이 골프공이에요! 멋진 스윙으로 홀인원하자 감탄하며 '오~(o)!' 외치는 모습입니다.", words: [{ jp: "おちゃ", romaji: "ocha", ko: "차 (녹차)", emoji: "🍵", exJp: "おちゃを のむ。", exKo: "차를 마신다." }, { jp: "おかし", romaji: "okashi", ko: "과자", emoji: "🍪", exJp: "おいしい おかし。", exKo: "맛있는 과자." }] },
+    { id: 'k6', char: "か", romaji: "ka", ko: "카", row: "か행", strokes: ["M 20 40 L 56 36 C 58 58 54 78 44 84 L 34 74", "M 40 16 C 36 46 28 70 18 86", "M 72 32 C 80 44 86 58 88 70"], emoji: "📷", phrase: "찰칵! 사진 찍는 '카(か)'메라", story: "한자 힘 력(力) 옆에 카메라 플래시 점(丶)이 반짝 터지는 모양이에요.", words: [{ jp: "かさ", romaji: "kasa", ko: "우산", emoji: "☂️", exJp: "かさを さす。", exKo: "우산을 쓰다." }, { jp: "かばん", romaji: "kaban", ko: "가방", emoji: "🎒", exJp: "あたらしい かばん。", exKo: "새 가방." }] },
+    { id: 'k7', char: "き", romaji: "ki", ko: "키", row: "か행", strokes: ["M 26 28 Q 50 26 72 22", "M 24 44 Q 52 42 76 38", "M 46 14 L 58 58", "M 30 68 C 36 84 56 88 74 84"], emoji: "🔑", phrase: "문을 여는 열쇠 '키(き)'", story: "위쪽 가로선 두 개는 열쇠 톱니, 아래 둥근 곡선은 열쇠 손잡이예요. 영어 Key(키)와 똑같아요!", words: [{ jp: "き", romaji: "ki", ko: "나무", emoji: "🌳", exJp: "おおきい き。", exKo: "커다란 나무." }, { jp: "きつね", romaji: "kitsune", ko: "여우", emoji: "🦊", exJp: "やまの きつね。", exKo: "산속의 여우." }] },
+    { id: 'k8', char: "く", romaji: "ku", ko: "쿠", row: "か행", strokes: ["M 64 16 L 30 50 L 66 86"], emoji: "🐦", phrase: "'쿠(く)쿠' 우는 새의 부리", story: "한 획으로 꺾인 모양이 새가 입을 벌린 부리(<)와 똑같아요.", words: [{ jp: "くつ", romaji: "kutsu", ko: "신발, 구두", emoji: "👟", exJp: "くつを はく。", exKo: "신발을 신는다." }, { jp: "くるま", romaji: "kuruma", ko: "자동차", emoji: "🚗", exJp: "はやい くるま。", exKo: "빠른 자동차." }] },
+    { id: 'k9', char: "け", romaji: "ke", ko: "케", row: "か행", strokes: ["M 26 20 C 22 46 22 68 28 84 L 34 72", "M 46 40 Q 64 38 82 36", "M 66 16 C 68 48 64 72 46 88"], emoji: "🎂", phrase: "달콤한 '케(け)'이크 한 조각", story: "오른쪽 십자(+) 모양이 케이크를 자르는 나이프처럼 보여요.", words: [{ jp: "けしごむ", romaji: "keshigomu", ko: "지우개", emoji: "🧼", exJp: "けしごむで けす。", exKo: "지우개로 지운다." }, { jp: "いけ", romaji: "ike", ko: "연못", emoji: "🏞️", exJp: "ひろい いけ。", exKo: "넓은 연못." }] },
+    { id: 'k10', char: "こ", romaji: "ko", ko: "코", row: "か행", strokes: ["M 28 28 Q 52 26 72 28 L 62 38", "M 26 68 C 36 80 56 80 76 76"], emoji: "👃", phrase: "위아래로 둥근 우리 '코(こ)'", story: "위쪽 선은 콧등, 아래쪽 선은 콧볼처럼 두 획이 마주 보고 있어요.", words: [{ jp: "こども", romaji: "kodomo", ko: "어린이, 아이", emoji: "🧒", exJp: "げんきな こども。", exKo: "활기찬 어린이." }, { jp: "こえ", romaji: "koe", ko: "목소리", emoji: "🗣️", exJp: "きれいな こえ。", exKo: "고운 목소리." }] },
+    { id: 'k11', char: "さ", romaji: "sa", ko: "사", row: "さ행", strokes: ["M 24 34 Q 52 32 76 28", "M 46 14 L 58 56", "M 28 66 C 36 82 56 86 74 82"], emoji: "🍏", phrase: "웃는 얼굴로 '사(さ)'과 먹자!", story: "き(키)에서 가로줄 하나가 빠진 모양으로, 사과를 먹고 미소 짓는 입꼬리예요.", words: [{ jp: "さくら", romaji: "sakura", ko: "벚꽃", emoji: "🌸", exJp: "さくらが さく。", exKo: "벚꽃이 핀다." }, { jp: "さかな", romaji: "sakana", ko: "물고기, 생선", emoji: "🐟", exJp: "さかなが およぐ。", exKo: "물고기가 헤엄친다." }] },
+    { id: 'k12', char: "し", romaji: "shi", ko: "시", row: "さ행", strokes: ["M 38 16 L 38 66 C 38 84 62 86 78 68"], emoji: "🥤", phrase: "'시(し)'원한 음료수 빨대!", story: "아래가 둥글게 휘어진 빨대(낚싯바늘) 모양이에요.", words: [{ jp: "しろ", romaji: "shiro", ko: "하얀색 / 성", emoji: "⚪", exJp: "しろい くも。", exKo: "하얀 구름." }, { jp: "しんぶん", romaji: "shinbun", ko: "신문", emoji: "📰", exJp: "しんぶんを よむ。", exKo: "신문을 읽는다." }] },
+    { id: 'k13', char: "す", romaji: "su", ko: "스", row: "さ행", strokes: ["M 20 32 Q 52 30 80 28", "M 56 14 L 56 62 C 56 76 36 74 36 58 C 36 44 58 44 58 64 C 58 76 52 86 42 92"], emoji: "🎢", phrase: "빙글 돌아 내려가는 '스(す)'프링!", story: "세로줄 중간에 동그란 스프링 고리가 한 바퀴 말려 있어요.", words: [{ jp: "すし", romaji: "sushi", ko: "초밥", emoji: "🍣", exJp: "すしを たべる。", exKo: "초밥을 먹는다." }, { jp: "すいか", romaji: "suika", ko: "수박", emoji: "🍉", exJp: "あまい すいか。", exKo: "달콤한 수박." }] },
+    { id: 'k14', char: "せ", romaji: "se", ko: "세", row: "さ행", strokes: ["M 18 42 Q 52 40 84 36", "M 66 18 L 66 56 L 56 50", "M 34 22 L 34 72 C 34 84 48 84 76 82"], emoji: "🌍", phrase: "한자 인간 '세(世)'에서 온 '세(せ)'!", story: "한자 세상 세(世)를 부드럽게 줄여 쓴 글자예요.", words: [{ jp: "せんせい", romaji: "sensei", ko: "선생님", emoji: "👩‍🏫", exJp: "やさしい せんせい。", exKo: "상냥한 선생님." }, { jp: "せかい", romaji: "sekai", ko: "세계, 세상", emoji: "🌏", exJp: "ひろい せかい。", exKo: "넓은 세계." }] },
+    { id: 'k15', char: "そ", romaji: "so", ko: "소", row: "さ행", strokes: ["M 30 20 L 68 18 L 24 52 L 76 48 C 46 58 38 84 72 86"], emoji: "🍦", phrase: "지그재그로 짠 '소(そ)'프트 아이스크림!", story: "위에서 지그재그(Z)로 내려오다 아래에서 둥글게(C) 받쳐 주는 아이스크림 모양이에요.", words: [{ jp: "そら", romaji: "sora", ko: "하늘", emoji: "🌤️", exJp: "あおい そら。", exKo: "푸른 하늘." }, { jp: "そうじ", romaji: "souji", ko: "청소", emoji: "🧹", exJp: "へやの そうじ。", exKo: "방 청소." }] },
+    { id: 'k16', char: "た", romaji: "ta", ko: "타", row: "た행", strokes: ["M 20 32 Q 40 30 58 28", "M 40 14 C 36 44 26 70 18 86", "M 54 50 Q 70 48 84 48", "M 52 74 C 62 82 74 84 86 80"], emoji: "🚕", phrase: "t+a(타) 모양 그대로 택시를 '타(た)'!", story: "왼쪽 십자 모양은 알파벳 t, 오른쪽 두 줄과 합쳐져 'ta(타)'처럼 보여요.", words: [{ jp: "たまご", romaji: "tamago", ko: "달걀, 계란", emoji: "🥚", exJp: "たまごを やく。", exKo: "달걀을 굽는다." }, { jp: "たこ", romaji: "tako", ko: "문어", emoji: "🐙", exJp: "うみの たこ。", exKo: "바다의 문어." }] },
+    { id: 'k17', char: "ち", romaji: "chi", ko: "치", row: "た행", strokes: ["M 24 30 Q 50 28 74 26", "M 46 14 L 36 54 C 54 44 78 52 74 72 C 70 86 52 88 34 86"], emoji: "🧀", phrase: "숫자 5를 닮은 '치(ち)'즈!", story: "숫자 5와 아주 비슷하게 생겼어요. 다섯 조각의 노란 치즈로 외워 보세요!", words: [{ jp: "ちず", romaji: "chizu", ko: "지도", emoji: "🗺️", exJp: "ちずを みる。", exKo: "지도를 본다." }, { jp: "くち", romaji: "kuchi", ko: "입", emoji: "👄", exJp: "くちを あける。", exKo: "입을 벌린다." }] },
+    { id: 'k18', char: "つ", romaji: "tsu", ko: "츠", row: "た행", strokes: ["M 20 42 C 48 28 82 36 78 62 C 74 80 54 86 38 86"], emoji: "🌊", phrase: "둥글게 덮치는 큰 파도 '츠(つ)'나미!", story: "오른쪽으로 둥글게 말리는 큰 파도(츠나미) 모양이에요.", words: [{ jp: "つき", romaji: "tsuki", ko: "달", emoji: "🌙", exJp: "きれいな つき。", exKo: "아름다운 달." }, { jp: "つくえ", romaji: "tsukue", ko: "책상", emoji: "🪑", exJp: "つくえの うえ。", exKo: "책상 위." }] },
+    { id: 'k19', char: "て", romaji: "te", ko: "테", row: "た행", strokes: ["M 20 26 L 78 22 C 46 38 38 78 72 86"], emoji: "🎾", phrase: "알파벳 T를 닮은 '테(て)'니스 채!", story: "위쪽 가로선과 아래 기둥이 알파벳 T와 닮았어요.", words: [{ jp: "て", romaji: "te", ko: "손", emoji: "✋", exJp: "てを あらう。", exKo: "손을 씻는다." }, { jp: "てがみ", romaji: "tegami", ko: "편지", emoji: "✉️", exJp: "てがみを かく。", exKo: "편지를 쓴다." }] },
+    { id: 'k20', char: "と", romaji: "to", ko: "토", row: "た행", strokes: ["M 38 16 L 46 50", "M 76 34 C 32 46 24 84 74 84"], emoji: "🐰", phrase: "쫑긋 귀가 솟은 아기 '토(と)'끼!", story: "위쪽으로 쫑긋 솟아오른 첫 획이 토끼의 귀 모양이에요.", words: [{ jp: "とり", romaji: "tori", ko: "새", emoji: "🐦", exJp: "とりが とぶ。", exKo: "새가 난다." }, { jp: "とけい", romaji: "tokei", ko: "시계", emoji: "⏰", exJp: "とけいを みる。", exKo: "시계를 본다." }] },
+    { id: 'k21', char: "な", romaji: "na", ko: "나", row: "な행", strokes: ["M 18 30 Q 38 28 54 26", "M 38 14 C 34 40 26 62 18 78", "M 68 24 Q 78 32 84 40", "M 62 44 L 62 76 C 62 86 42 84 42 72 C 42 60 64 62 82 78"], emoji: "🦋", phrase: "꽃 옆으로 날아온 '나(な)'비!", story: "왼쪽은 꽃가지(+), 오른쪽은 날개를 접고 앉은 나비 모양이에요.", words: [{ jp: "なつ", romaji: "natsu", ko: "여름", emoji: "🌻", exJp: "あつい なつ。", exKo: "더운 여름." }, { jp: "なまえ", romaji: "namae", ko: "이름", emoji: "📛", exJp: "なまえを かく。", exKo: "이름을 쓴다." }] },
+    { id: 'k22', char: "に", romaji: "ni", ko: "니", row: "な행", strokes: ["M 26 20 C 22 46 22 70 28 84 L 34 72", "M 50 34 Q 66 32 82 34", "M 48 68 C 58 76 70 78 84 74"], emoji: "🦵", phrase: "정강이와 무릎 '니(に, Knee)'!", story: "왼쪽 긴 선은 정강이, 오른쪽 두 줄은 무릎관절(Knee=니)이에요.", words: [{ jp: "にく", romaji: "niku", ko: "고기", emoji: "🍖", exJp: "にくを たべる。", exKo: "고기를 먹는다." }, { jp: "にじ", romaji: "niji", ko: "무지개", emoji: "🌈", exJp: "そらの にじ。", exKo: "하늘의 무지개." }] },
+    { id: 'k23', char: "ぬ", romaji: "nu", ko: "누", row: "な행", strokes: ["M 28 24 C 34 50 40 70 48 82", "M 62 18 C 56 54 34 80 24 70 C 16 60 38 38 64 46 C 80 52 78 78 62 78 C 52 78 56 64 70 68 C 78 70 84 76 88 82"], emoji: "🍜", phrase: "젓가락으로 감아 올린 '누(ぬ)'들(면)!", story: "젓가락에 라면 면발(Noodle)을 돌돌 말아 올린 모양이에요. 끝에 고리 매듭이 있어요!", words: [{ jp: "ぬの", romaji: "nuno", ko: "천, 옷감", emoji: "🧵", exJp: "やわらかい ぬの。", exKo: "부드러운 천." }, { jp: "いぬ", romaji: "inu", ko: "강아지", emoji: "🐕", exJp: "いぬと あそぶ。", exKo: "강아지와 논다." }] },
+    { id: 'k24', char: "ね", romaji: "ne", ko: "네", row: "な행", strokes: ["M 32 16 L 32 86", "M 18 36 L 46 30 L 22 68 L 54 44 C 76 34 82 68 68 78 C 58 84 58 68 72 70 C 80 72 86 78 90 84"], emoji: "🐱", phrase: "꼬리를 둥글게 만 고양이 '네(ね)'코!", story: "기둥 옆에 앉아 끝부분 꼬리를 동그랗게 말고 있는 고양이(ねこ) 모습이에요.", words: [{ jp: "ねこ", romaji: "neko", ko: "고양이", emoji: "🐱", exJp: "ねこが ねる。", exKo: "고양이가 잔다." }, { jp: "ねずみ", romaji: "nezumi", ko: "쥐", emoji: "🐭", exJp: "ちいさい ねずみ。", exKo: "작은 쥐." }] },
+    { id: 'k25', char: "の", romaji: "no", ko: "노", row: "な행", strokes: ["M 54 22 C 48 54 34 76 24 68 C 14 58 26 26 56 26 C 80 26 84 68 58 84"], emoji: "🚫", phrase: "금지 표지판처럼 생긴 '노(の, NO)'!", story: "동그라미 안에 사선이 그어진 금지 표지판(NO!)과 똑같아요.", words: [{ jp: "のり", romaji: "nori", ko: "김 (먹는 김)", emoji: "🍙", exJp: "おいしい のり。", exKo: "맛있는 김." }, { jp: "のみもの", romaji: "nomimono", ko: "음료수", emoji: "🧃", exJp: "つめたい のみもの。", exKo: "차가운 음료수." }] },
+    { id: 'k26', char: "は", romaji: "ha", ko: "하", row: "は행", strokes: ["M 26 20 C 22 46 22 70 28 84 L 34 72", "M 46 38 Q 66 36 84 34", "M 66 16 L 66 74 C 66 84 46 82 46 70 C 46 58 68 60 86 78"], emoji: "😆", phrase: "입 벌리고 '하(は)하하' 웃는 모습!", story: "알파벳 H와 a를 합쳐 놓은 모양으로, '하(ha)하하!' 웃는 얼굴이에요.", words: [{ jp: "はな", romaji: "hana", ko: "꽃 (또는 코)", emoji: "🌷", exJp: "きれいな はな。", exKo: "예쁜 꽃." }, { jp: "はこ", romaji: "hako", ko: "상자", emoji: "📦", exJp: "おおきい はこ。", exKo: "큰 상자." }] },
+    { id: 'k27', char: "ひ", romaji: "hi", ko: "히", row: "は행", strokes: ["M 22 30 L 46 26 C 28 54 32 84 56 84 C 76 84 78 52 72 26 C 78 44 84 58 90 68"], emoji: "😁", phrase: "'히(ひ)히' 웃는 둥근 입 모양!", story: "입꼬리를 한껏 올리고 '히(hi)히히~' 웃을 때의 입 모양을 본뜬 글자예요.", words: [{ jp: "ひこうき", romaji: "hikouki", ko: "비행기", emoji: "✈️", exJp: "そらの ひこうき。", exKo: "하늘의 비행기." }, { jp: "ひと", romaji: "hito", ko: "사람", emoji: "🧑", exJp: "やさしい ひと。", exKo: "상냥한 사람." }] },
+    { id: 'k28', char: "ふ", romaji: "fu", ko: "후", row: "は행", strokes: ["M 46 16 Q 56 22 62 28", "M 44 42 C 62 52 66 72 52 82 C 42 88 36 80 34 74", "M 20 56 C 16 66 16 76 22 82", "M 76 54 C 82 64 86 74 84 82"], emoji: "🗻", phrase: "후지산 능선 모양 '후~(ふ)'!", story: "후지산 봉우리와 양쪽 능선을 닮았어요. 바람을 '후~(fu)' 부는 모습!", words: [{ jp: "ふね", romaji: "fune", ko: "배 (선박)", emoji: "🚢", exJp: "うみの ふね。", exKo: "바다의 배." }, { jp: "ふゆ", romaji: "fuyu", ko: "겨울", emoji: "⛄", exJp: "さむい ふゆ。", exKo: "추운 겨울." }] },
+    { id: 'k29', char: "へ", romaji: "he", ko: "헤", row: "は행", strokes: ["M 16 62 L 42 32 L 86 72"], emoji: "⛰️", phrase: "산에 오르며 '헤(へ)헤' 숨차는 모양!", story: "산(^)을 올라갔다가 내려오는 한 획 모양이에요.", words: [{ jp: "へや", romaji: "heya", ko: "방", emoji: "🚪", exJp: "ひろい へや。", exKo: "넓은 방." }, { jp: "へび", romaji: "hebi", ko: "뱀", emoji: "🐍", exJp: "ながい へび。", exKo: "긴 뱀." }] },
+    { id: 'k30', char: "ほ", romaji: "ho", ko: "호", row: "は행", strokes: ["M 24 20 C 20 46 20 70 26 84 L 32 72", "M 46 26 Q 66 24 84 22", "M 46 46 Q 66 44 84 42", "M 66 26 L 66 76 C 66 86 46 84 46 72 C 46 60 68 62 86 78"], emoji: "🎅", phrase: "모자 쓴 산타가 '호(ほ)호호'!", story: "'は(하)' 위에 가로줄 모자를 하나 더 씌운 글자예요.", words: [{ jp: "ほし", romaji: "hoshi", ko: "별", emoji: "⭐", exJp: "よぞらの ほし。", exKo: "밤하늘의 별." }, { jp: "ほん", romaji: "hon", ko: "책", emoji: "📚", exJp: "ほんを よむ。", exKo: "책을 읽는다." }] },
+    { id: 'k31', char: "ま", romaji: "ma", ko: "마", row: "ま행", strokes: ["M 22 28 Q 50 26 78 24", "M 24 48 Q 50 46 76 44", "M 52 14 L 52 76 C 52 86 30 84 30 72 C 30 60 56 62 80 78"], emoji: "🧙‍♀️", phrase: "두 팔 벌린 '마(ま)'법사!", story: "가로줄 두 개는 양팔을 뻗은 모습이고 아래 동그라미는 마법 구슬이에요.", words: [{ jp: "まど", romaji: "mado", ko: "창문", emoji: "🪟", exJp: "まどを あける。", exKo: "창문을 연다." }, { jp: "まくら", romaji: "makura", ko: "베개", emoji: "🛌", exJp: "やわらかい まくら。", exKo: "푹신한 베개." }] },
+    { id: 'k32', char: "み", romaji: "mi", ko: "미", row: "ま행", strokes: ["M 28 24 L 62 20 L 34 74 C 22 80 18 64 32 56 C 52 46 78 58 86 72", "M 76 42 C 74 62 66 78 52 88"], emoji: "🎵", phrase: "도레'미(み)' 높은음자리표 모양!", story: "악보의 음표처럼 부드럽게 꼬부라진 모양이에요.", words: [{ jp: "みず", romaji: "mizu", ko: "물", emoji: "💧", exJp: "みずを のむ。", exKo: "물을 마신다." }, { jp: "みみ", romaji: "mimi", ko: "귀", emoji: "👂", exJp: "みみで きく。", exKo: "귀로 듣는다." }] },
+    { id: 'k33', char: "む", romaji: "mu", ko: "무", row: "ま행", strokes: ["M 22 30 Q 40 28 56 26", "M 42 14 L 42 60 C 42 72 24 70 24 56 C 24 44 44 46 44 64 C 44 82 68 84 78 72 L 76 58", "M 74 28 Q 82 36 86 44"], emoji: "🐮", phrase: "소가 '무~(む, Moo)' 하고 우는 모양!", story: "가운데 동그란 고리는 소의 코, 오른쪽 점은 뿔이에요.", words: [{ jp: "むし", romaji: "mushi", ko: "벌레, 곤충", emoji: "🐞", exJp: "ちいさい むし。", exKo: "작은 벌레." }, { jp: "むら", romaji: "mura", ko: "마을", emoji: "🏡", exJp: "しずかな むら。", exKo: "조용한 마을." }] },
+    { id: 'k34', char: "め", romaji: "me", ko: "메", row: "ま행", strokes: ["M 28 24 C 34 50 40 70 48 82", "M 62 18 C 56 54 34 80 24 70 C 16 60 40 36 68 46 C 84 52 80 78 58 86"], emoji: "👁️", phrase: "동그란 눈(め)과 속눈썹, '메(め)'!", story: "ぬ(누)에서 끝 꼬리 매듭이 없는 깔끔한 눈 모양이에요.", words: [{ jp: "め", romaji: "me", ko: "눈 (신체)", emoji: "👁️", exJp: "おおきい め。", exKo: "큰 눈." }, { jp: "めがね", romaji: "megane", ko: "안경", emoji: "👓", exJp: "めがねを かける。", exKo: "안경을 쓰다." }] },
+    { id: 'k35', char: "も", romaji: "mo", ko: "모", row: "ま행", strokes: ["M 44 16 C 40 50 40 84 62 84 C 78 84 82 68 76 54", "M 22 36 Q 46 36 68 34", "M 22 56 Q 46 56 68 54"], emoji: "🎣", phrase: "낚싯바늘에 미끼 두 개를 '모(も)'아 끼운 모양!", story: "낚싯바늘(し)에 미끼 두 줄을 끼워 물고기를 모두 잡으려는 모습이에요.", words: [{ jp: "もも", romaji: "momo", ko: "복숭아", emoji: "🍑", exJp: "あまい もも。", exKo: "달콤한 복숭아." }, { jp: "もり", romaji: "mori", ko: "숲", emoji: "🌲", exJp: "みどりの もり。", exKo: "푸른 숲." }] },
+    { id: 'k36', char: "や", romaji: "ya", ko: "야", row: "や행", strokes: ["M 18 46 C 46 32 78 32 76 52 C 74 64 58 66 48 60", "M 52 16 Q 58 22 64 28", "M 34 20 L 54 88"], emoji: "⚾", phrase: "'야(や)'구 배트와 날아가는 야구공!", story: "길게 뻗은 획은 야구 배트이고 위쪽 작은 점은 날아가는 야구공이에요.", words: [{ jp: "やま", romaji: "yama", ko: "산", emoji: "⛰️", exJp: "たかい やま。", exKo: "높은 산." }, { jp: "やさい", romaji: "yasai", ko: "채소, 야채", emoji: "🥦", exJp: "やさいを たべる。", exKo: "채소를 먹는다." }] },
+    { id: 'k37', char: "ゆ", romaji: "yu", ko: "유", row: "や행", strokes: ["M 24 24 L 28 74 C 36 42 78 34 78 58 C 78 76 62 82 48 76", "M 56 14 C 58 48 56 74 44 90"], emoji: "♨️", phrase: "따뜻한 온천탕 표시 '유(ゆ)'!", story: "일본 온천이나 목욕탕 입구에 항상 적혀 있는 뜨거운 물 표시가 바로 'ゆ(yu)'예요.", words: [{ jp: "ゆき", romaji: "yuki", ko: "눈 (내리는 눈)", emoji: "❄️", exJp: "しろい ゆき。", exKo: "하얀 눈." }, { jp: "ゆめ", romaji: "yume", ko: "꿈", emoji: "💭", exJp: "いい ゆめ。", exKo: "좋은 꿈." }] },
+    { id: 'k38', char: "よ", romaji: "yo", ko: "요", row: "や행", strokes: ["M 54 34 L 78 32", "M 52 16 L 52 76 C 52 86 30 84 30 72 C 30 60 56 62 82 78"], emoji: "🪀", phrase: "줄에 매달려 돌아가는 '요(よ)'요!", story: "위쪽 가로선은 줄, 아래 둥근 매듭은 장난감 요요 모양이에요.", words: [{ jp: "よる", romaji: "yoru", ko: "밤", emoji: "🌃", exJp: "しずかな よる。", exKo: "조용한 밤." }, { jp: "よむ", romaji: "yomu", ko: "읽다", emoji: "📖", exJp: "ほんを よむ。", exKo: "책을 읽다." }] },
+    { id: 'k39', char: "ら", romaji: "ra", ko: "라", row: "ら행", strokes: ["M 38 16 Q 52 20 64 26", "M 32 36 L 28 60 C 46 46 76 52 72 72 C 68 86 50 88 34 86"], emoji: "📻", phrase: "안테나가 달린 숫자 5 모양 '라(ら)'디오!", story: "위쪽 사선 획은 안테나이고 아래는 라디오 스피커 몸체예요.", words: [{ jp: "らいおん", romaji: "raion", ko: "사자", emoji: "🦁", exJp: "つよい らいおん。", exKo: "강한 사자." }, { jp: "さくら", romaji: "sakura", ko: "벚꽃", emoji: "🌸", exJp: "はるの さくら。", exKo: "봄의 벚꽃." }] },
+    { id: 'k40', char: "り", romaji: "ri", ko: "리", row: "ら행", strokes: ["M 32 22 C 28 46 28 64 34 72 L 42 60", "M 66 20 C 70 48 68 74 48 88"], emoji: "🎀", phrase: "길게 늘어진 두 가닥 '리(り)'본!", story: "예쁜 머리 리본 끈 두 가닥이 길게 늘어진 모양이에요.", words: [{ jp: "りんご", romaji: "ringo", ko: "사과", emoji: "🍎", exJp: "あかい りんご。", exKo: "빨간 사과." }, { jp: "りす", romaji: "risu", ko: "다람쥐", emoji: "🐿️", exJp: "もりの りす。", exKo: "숲속의 다람쥐." }] },
+    { id: 'k41', char: "る", romaji: "ru", ko: "루", row: "ら행", strokes: ["M 28 22 L 66 20 L 28 56 C 54 44 80 52 76 74 C 72 88 46 88 44 76 C 42 66 56 66 66 78"], emoji: "🦘", phrase: "배 주머니 고리가 달린 캥거'루(る)'!", story: "'ろ(로)'와 비슷하지만 맨 끝에 동그란 주머니(루프)가 달려 있어요!", words: [{ jp: "さる", romaji: "saru", ko: "원숭이", emoji: "🐵", exJp: "きの うえの さる。", exKo: "나무 위의 원숭이." }, { jp: "くるま", romaji: "kuruma", ko: "자동차", emoji: "🚙", exJp: "くるまに のる。", exKo: "자동차를 탄다." }] },
+    { id: 'k42', char: "れ", romaji: "re", ko: "레", row: "ら행", strokes: ["M 32 16 L 32 86", "M 18 36 L 46 30 L 22 68 L 56 42 C 74 32 76 68 72 78 C 70 84 80 86 90 80"], emoji: "🍋", phrase: "바깥으로 삐쳐 나간 새콤한 '레(れ)'몬!", story: "기둥 옆 지그재그 후 끝이 바깥으로 휙 뻗어 나가는 모양이에요.", words: [{ jp: "れいぞうこ", romaji: "reizouko", ko: "냉장고", emoji: "🧊", exJp: "おおきい れいぞうこ。", exKo: "커다란 냉장고." }, { jp: "れもん", romaji: "remon", ko: "레몬", emoji: "🍋", exJp: "すっぱい れもん。", exKo: "새콤한 레몬." }] },
+    { id: 'k43', char: "ろ", romaji: "ro", ko: "로", row: "ら행", strokes: ["M 28 22 L 66 20 L 28 56 C 54 44 80 54 74 74 C 68 86 50 88 36 86"], emoji: "🛣️", phrase: "막힘없이 뻥 뚫린 도'로(ろ)'!", story: "'る(루)'와 달리 끝에 고리가 없어 시원하게 뚫린 고속도로 모양이에요.", words: [{ jp: "ろく", romaji: "roku", ko: "숫자 6 (육)", emoji: "6️⃣", exJp: "ろくがつ。", exKo: "6월." }, { jp: "しろ", romaji: "shiro", ko: "하얀색 / 성", emoji: "🏰", exJp: "おおきい しろ。", exKo: "커다란 성." }] },
+    { id: 'k44', char: "わ", romaji: "wa", ko: "와", row: "わ행", strokes: ["M 32 16 L 32 86", "M 18 36 L 46 30 L 22 68 L 54 42 C 78 32 84 68 62 84"], emoji: "🍷", phrase: "둥글고 넉넉한 '와(わ)'인 잔!", story: "오른쪽 곡선이 둥근 와인 잔처럼 매끄럽게 감싸 안는 모양이에요.", words: [{ jp: "わたし", romaji: "watashi", ko: "나, 저", emoji: "🙋", exJp: "わたしの ほん。", exKo: "나의 책." }, { jp: "わに", romaji: "wani", ko: "악어", emoji: "🐊", exJp: "かわの わに。", exKo: "강의 악어." }] },
+    { id: 'k45', char: "を", romaji: "wo", ko: "오(워)", row: "わ행", strokes: ["M 22 26 Q 48 24 72 22", "M 44 12 L 32 48 L 54 42 C 60 40 62 54 60 72", "M 76 46 C 32 56 26 84 78 84"], emoji: "🏊", phrase: "물속으로 점프하며 '오~(を)'!", story: "위쪽 사람이 아래 물결 속으로 풍덩 들어가는 모습으로, 조사(~을/를)에 쓰여요.", words: [{ jp: "みずを のむ", romaji: "mizu wo nomu", ko: "물을 마시다 (~을/를)", emoji: "🥤", exJp: "みずを のむ。", exKo: "물을 마신다." }, { jp: "ほんを よむ", romaji: "hon wo yomu", ko: "책을 읽다 (~을/를)", emoji: "📘", exJp: "ほんを よむ。", exKo: "책을 읽는다." }] },
+    { id: 'k46', char: "ん", romaji: "n", ko: "응(받침)", row: "わ행", strokes: ["M 48 16 L 24 74 C 34 54 54 52 56 68 C 58 84 76 84 86 64"], emoji: "🪑", phrase: "알파벳 필기체 'n'과 똑같은 받침 'ん(응)'!", story: "알파벳 소문자 n을 흘려 쓴 모양과 똑같으며, 우리말 받침(ㄴ,ㅁ,ㅇ) 소리를 내요.", words: [{ jp: "ぱん", romaji: "pan", ko: "빵", emoji: "🍞", exJp: "ぱんを たべる。", exKo: "빵을 먹는다." }, { jp: "みかん", romaji: "mikan", ko: "귤", emoji: "🍊", exJp: "あまい みかん。", exKo: "달콤한 귤." }] }
+  ];
+
+  const GOJUON_ROWS = [
+    { label: "あ행 (아·이·우·에·오)", chars: ["あ", "い", "う", "え", "お"] },
+    { label: "か행 (카·키·쿠·케·코)", chars: ["か", "き", "く", "け", "こ"] },
+    { label: "さ행 (사·시·스·세·소)", chars: ["さ", "し", "す", "せ", "そ"] },
+    { label: "た행 (타·치·츠·테·토)", chars: ["た", "ち", "つ", "て", "と"] },
+    { label: "な행 (나·니·누·네·노)", chars: ["な", "に", "ぬ", "ね", "の"] },
+    { label: "は행 (하·히·후·헤·호)", chars: ["は", "ひ", "ふ", "へ", "ほ"] },
+    { label: "ま행 (마·미·무·메·모)", chars: ["ま", "み", "む", "め", "も"] },
+    { label: "や행 (야·유·요)", chars: ["や", null, "ゆ", null, "よ"] },
+    { label: "ら행 (라·리·루·레·로)", chars: ["ら", "り", "る", "れ", "ろ"] },
+    { label: "わ행 및 ん (와·오·응)", chars: ["わ", null, "を", null, "ん"] }
+  ];
+
+  // =========================================================================
+  // 2. 트랙 B: 필수 형용사 60선 데이터베이스 (い형용사 30개 + な형용사 30개)
+  // =========================================================================
+  const ADJECTIVES_DB = [
+    { id: 'a1', num: 1, type: 'i', kana: 'おおきい', kanji: '大きい', romaji: 'ookii', meaning: '크다', emoji: '🐘', mnemonic: '"오~ 키(おおきい)가 아주 크다!" 팔다리를 크게 벌린 코끼리를 떠올려 보세요.', wordJp: 'おおきい いえ (大きい 家)', wordKr: '큰 집', exJp: 'この かばんは おおきいですね。', exKr: '이 가방은 크네요.' },
+    { id: 'a2', num: 2, type: 'i', kana: 'ちいさい', kanji: '小さい', romaji: 'chiisai', meaning: '작다', emoji: '🐭', mnemonic: '작은 아기 쥐가 "치이~ 사이(ちいさい)가 좁고 작다"고 속삭이는 모습!', wordJp: 'ちいさい いぬ (小さい 犬)', wordKr: '작은 강아지', exJp: 'ちいさい こえで はなして ください。', exKr: '작은 목소리로 이야기해 주세요.' },
+    { id: 'a3', num: 3, type: 'i', kana: 'たかい', kanji: '高い', romaji: 'takai', meaning: '높다, 비싸다', emoji: '🗼', mnemonic: '높은 타워 전망대는 입장료도 비싸서 "타카이(たかい)!"', wordJp: 'たかい やま (高い 山)', wordKr: '높은 산', exJp: 'この とけいは とても たかいです。', exKr: '이 시계는 매우 비쌉니다.' },
+    { id: 'a4', num: 4, type: 'i', kana: 'ひくい', kanji: '低い', romaji: 'hikui', meaning: '낮다', emoji: '🔉', mnemonic: '낮은 천장에 머리가 닿을락 말락 해 "히쿠(ひくい)!" 하고 고개를 숙이는 모습.', wordJp: 'ひくい こえ (低い 声)', wordKr: '낮은 목소리', exJp: 'きょうは きおんが ひくいです。', exKr: '오늘은 기온이 낮습니다.' },
+    { id: 'a5', num: 5, type: 'i', kana: 'やすい', kanji: '安い', romaji: 'yasui', meaning: '싸다', emoji: '🏷️', mnemonic: '할인 마트에서 가격이 너무 싸서 "야호~ 스마일(やすい)!"', wordJp: 'やすい みせ (安い 店)', wordKr: '값싼 가게', exJp: 'この りんごは やすくて おいしいです。', exKr: '이 사과는 싸고 맛있습니다.' },
+    { id: 'a6', num: 6, type: 'i', kana: 'あたらしい', kanji: '新しい', romaji: 'atarashii', meaning: '새롭다', emoji: '✨', mnemonic: '반짝거리는 새 신발을 보고 "아~ 탐나네, 새것이라(あたらしい)!"', wordJp: 'あたらしい くるま (新しい 車)', wordKr: '새 자동차', exJp: 'あたらしい くつを かいました。', exKr: '새 신발을 샀습니다.' },
+    { id: 'a7', num: 7, type: 'i', kana: 'ふるい', kanji: '古い', romaji: 'furui', meaning: '오래되다, 낡다', emoji: '🏚️', mnemonic: '오래된 책 위의 먼지를 입으로 "후루룩(ふるい)" 불어 털어내는 모습!', wordJp: 'ふるい おてら (古い お寺)', wordKr: '오래된 절', exJp: 'これは ふるい えいがです。', exKr: '이것은 오래된 영화입니다.' },
+    { id: 'a8', num: 8, type: 'i', kana: 'よい', kanji: '良い', altAnswers: ['いい', 'よい', '良い'], romaji: 'yoi / ii', meaning: '좋다', emoji: '👍', mnemonic: '엄지척! "요이(よい)~ 이이(いい) 기분 좋다!" (과거·부정 활용은 항상 よい 기준)', wordJp: 'いい てんき (良い 天気)', wordKr: '좋은 날씨', exJp: 'きょうは てんきが いいですね。', exKr: '오늘은 날씨가 좋네요.' },
+    { id: 'a9', num: 9, type: 'i', kana: 'わるい', kanji: '悪い', romaji: 'warui', meaning: '나쁘다', emoji: '😈', mnemonic: '"와~ 루이(わるい)비통 짝퉁이라 품질이 나쁘다!"', wordJp: 'きぶんが わるい (気分が 悪い)', wordKr: '기분이 나쁘다', exJp: 'からだの ちょうしが わるいです。', exKr: '몸 상태가 나쁩니다.' },
+    { id: 'a10', num: 10, type: 'i', kana: 'あつい', kanji: '暑い', romaji: 'atsui', meaning: '덥다 (날씨)', emoji: '☀️', mnemonic: '여름 햇볕이 쨍쨍 내리쬐어 "아! 츠(あつい)~ 땀나고 덥다!"', wordJp: 'あつい なつ (暑い 夏)', wordKr: '더운 여름', exJp: 'ことしの なつは とても あついです。', exKr: '올해 여름은 매우 덥습니다.' },
+    { id: 'a11', num: 11, type: 'i', kana: 'さむい', kanji: '寒い', romaji: 'samui', meaning: '춥다 (날씨)', emoji: '🥶', mnemonic: '찬 바람에 사시나무 떨듯 "사~ 무이(さむい) 춥다!"', wordJp: 'さむい ふゆ (寒い 冬)', wordKr: '추운 겨울', exJp: 'そとは さむいから コートを きてね。', exKr: '밖은 추우니까 코트를 입으렴.' },
+    { id: 'a12', num: 12, type: 'i', kana: 'あつい', kanji: '熱い', romaji: 'atsui', meaning: '뜨겁다 (촉각)', emoji: '☕', mnemonic: '갓 끓인 커피 잔을 만지고 "아! 뜨거워(あつい)!"', wordJp: 'あつい コーヒー (熱い コーヒー)', wordKr: '뜨거운 커피', exJp: 'あつい おちゃを のみました。', exKr: '뜨거운 차를 마셨습니다.' },
+    { id: 'a13', num: 13, type: 'i', kana: 'つめたい', kanji: '冷たい', romaji: 'tsumetai', meaning: '차갑다 (촉각)', emoji: '🧊', mnemonic: '얼음을 손톱(つめ, 츠메) 끝으로 만지니 "츠메타이(つめたい) 차갑다!"', wordJp: 'つめたい みず (冷たい 水)', wordKr: '차가운 물', exJp: 'つめたい ジュースが のみたいです。', exKr: '차가운 주스를 마시고 싶습니다.' },
+    { id: 'a14', num: 14, type: 'i', kana: 'あたたかい', kanji: '暖かい', altAnswers: ['あたたかい', '暖かい', '温かい'], romaji: 'atataka', meaning: '따뜻하다', emoji: '🧣', mnemonic: '따스한 봄 햇살 아래에서 "아~ 다 따뜻해(あたたかい)!"', wordJp: 'あたたかい はる (暖かい 春)', wordKr: '따뜻한 봄', exJp: 'あたたかい スープを つくりました。', exKr: '따뜻한 수프를 만들었습니다.' },
+    { id: 'a15', num: 15, type: 'i', kana: 'すずしい', kanji: '涼しい', romaji: 'suzushii', meaning: '시원하다, 선선하다', emoji: '🍃', mnemonic: '가을바람에 풍경 방울(すず)이 "스즈시이(すずしい)~" 시원하게 울리는 소리!', wordJp: 'すずしい かぜ (涼しい 風)', wordKr: '시원한 바람', exJp: 'あきに なって すずしく なりました。', exKr: '가을이 되어 선선해졌습니다.' },
+    { id: 'a16', num: 16, type: 'i', kana: 'たのしい', kanji: '楽しい', romaji: 'tanoshii', meaning: '즐겁다', emoji: '🎶', mnemonic: '"다 같이 노래 부르니 타노시이(たのしい) 즐겁다!"', wordJp: 'たのしい りょこう (楽しい 旅行)', wordKr: '즐거운 여행', exJp: 'にほんごの べんきょうは たのしいです。', exKr: '일본어 공부는 즐겁습니다.' },
+    { id: 'a17', num: 17, type: 'i', kana: 'おもしろい', kanji: '面白い', romaji: 'omoshiroi', meaning: '재미있다', emoji: '🤣', mnemonic: '"어머! 시로이(おもしろい) 강아지 개인기가 진짜 재미있다!"', wordJp: 'おもしろい ほん (面白い 本)', wordKr: '재미있는 책', exJp: 'この まんがは とても おもしろいです。', exKr: '이 만화는 정말 재미있습니다.' },
+    { id: 'a18', num: 18, type: 'i', kana: 'いそがしい', kanji: '忙しい', romaji: 'isogashii', meaning: '바쁘다', emoji: '🏃', mnemonic: '"이소(いそ)룡처럼 이리저리 바쁘게 가시이(いそがしい)!"', wordJp: 'いそがしい まいにち (忙しい 毎日)', wordKr: '바쁜 매일', exJp: 'こんしゅうは しごとが いそがしいです。', exKr: '이번 주는 일이 바쁩니다.' },
+    { id: 'a19', num: 19, type: 'i', kana: 'おいしい', kanji: '美味しい', romaji: 'oishii', meaning: '맛있다', emoji: '🍣', mnemonic: '맛있는 초밥을 한 입 먹고 "오이시이(おいしい)~ 맛있다!"', wordJp: 'おいしい りょうり (美味しい 料理)', wordKr: '맛있는 요리', exJp: 'この ケーキは ほんとうに おいしいです。', exKr: '이 케이크는 정말로 맛있습니다.' },
+    { id: 'a20', num: 20, type: 'i', kana: 'まずい', kanji: 'まずい', romaji: 'mazui', meaning: '맛없다', emoji: '🤢', mnemonic: '소금 폭탄 주스를 마시고 "마즈이(まずい)! 맛없어서 못 마시겠다!"', wordJp: 'まずい くすり (まずい 薬)', wordKr: '맛없는 약', exJp: 'この りょうりは ちょっと まずいです。', exKr: '이 요리는 좀 맛없습니다.' },
+    { id: 'a21', num: 21, type: 'i', kana: 'ひろい', kanji: '広い', romaji: 'hiroi', meaning: '넓다', emoji: '🏟️', mnemonic: '넓은 잔디밭에서 "히어로(ひろい)가 마음껏 뛰어다닐 만큼 넓다!"', wordJp: 'ひろい へや (広い 部屋)', wordKr: '넓은 방', exJp: 'この こうえんは とても ひろいです。', exKr: '이 공원은 매우 넓습니다.' },
+    { id: 'a22', num: 22, type: 'i', kana: 'せまい', kanji: '狭い', romaji: 'semai', meaning: '좁다', emoji: '📦', mnemonic: '작은 상자 안이 "새(せ) 한 마리만(まい) 들어갈 만큼 좁다(せまい)!"', wordJp: 'せまい みち (狭い 道)', wordKr: '좁은 길', exJp: 'わたしの へやは すこし せまいです。', exKr: '제 방은 조금 좁습니다.' },
+    { id: 'a23', num: 23, type: 'i', kana: 'はやい', kanji: '早い', altAnswers: ['はやい', '早い', '速い'], romaji: 'hayai', meaning: '이르다, 빠르다', emoji: '⚡', mnemonic: '"하야(はやい)게 동이 트는 이른 아침, 발걸음도 빠르다!"', wordJp: 'はやい じかん (早い 時間)', wordKr: '이른 시간', exJp: 'あしたは はやく おきます。', exKr: '내일은 일찍 일어납니다.' },
+    { id: 'a24', num: 24, type: 'i', kana: 'おそい', kanji: '遅い', romaji: 'osoi', meaning: '늦다, 느리다', emoji: '🐢', mnemonic: '"오~ 소(おそい)처럼 걸음이 느리고 약속 시간도 늦다!"', wordJp: 'あゆみが おそい (歩みが 遅い)', wordKr: '걸음이 느리다', exJp: 'バスが おそくて ちこくしました。', exKr: '버스가 늦어서 지각했습니다.' },
+    { id: 'a25', num: 25, type: 'i', kana: 'ちかい', kanji: '近い', romaji: 'chikai', meaning: '가깝다', emoji: '📍', mnemonic: '"지하철역이 코앞이라 치카이(ちかい) 가깝다!"', wordJp: 'ちかい えき (近い 駅)', wordKr: '가까운 역', exJp: 'いえから がっこうまで ちかいです。', exKr: '집에서 학교까지 가깝습니다.' },
+    { id: 'a26', num: 26, type: 'i', kana: 'とおい', kanji: '遠い', romaji: 'tooi', meaning: '멀다', emoji: '🔭', mnemonic: '산 너머 멀리서 "토오이(とおい)~" 하고 울리는 메아리 소리!', wordJp: 'とおい ばしょ (遠い 場所)', wordKr: '먼 장소', exJp: 'くうこうは ここから とおいです。', exKr: '공항은 여기서 멉니다.' },
+    { id: 'a27', num: 27, type: 'i', kana: 'おもい', kanji: '重い', romaji: 'omoi', meaning: '무겁다', emoji: '🏋️', mnemonic: '무거운 택배 상자를 들며 "어모! 무거워(おもい)!"', wordJp: 'おもい にもつ (重い 荷物)', wordKr: '무거운 짐', exJp: 'この はこは とても おもいです。', exKr: '이 상자는 매우 무겁습니다.' },
+    { id: 'a28', num: 28, type: 'i', kana: 'かるい', kanji: '軽い', romaji: 'karui', meaning: '가볍다', emoji: '🪶', mnemonic: '밀가루처럼 "가루(かるい)처럼 깃털이 가볍다!"', wordJp: 'かるい かばん (軽い かばん)', wordKr: '가벼운 가방', exJp: 'この ノートパソコンは かるいです。', exKr: '이 노트북은 가볍습니다.' },
+    { id: 'a29', num: 29, type: 'i', kana: 'むずかしい', kanji: '難しい', romaji: 'muzukashii', meaning: '어렵다', emoji: '🧩', mnemonic: '퍼즐 문제가 너무 어려워서 "무지 까시(むずかしい) 돋네!"', wordJp: 'むずかしい もんだい (難しい 問題)', wordKr: '어려운 문제', exJp: 'かんじの テストは むずかしいです。', exKr: '한자 시험은 어렵습니다.' },
+    { id: 'a30', num: 30, type: 'i', kana: 'やさしい', kanji: '優しい', altAnswers: ['やさしい', '優しい', '易しい'], romaji: 'yasashii', meaning: '상냥하다, 쉽다', emoji: '🥰', mnemonic: '"야~ 사시(やさしい)사철 미소 짓는 선생님은 상냥하고 설명도 쉽다!"', wordJp: 'やさしい ひと (優しい 人)', wordKr: '상냥한 사람', exJp: 'せんせいは とても やさしいです。', exKr: '선생님은 매우 상냥하십니다.' },
+    { id: 'a31', num: 31, type: 'na', kana: 'すきだ', kanji: '好きだ', romaji: 'sukida', meaning: '좋아하다', emoji: '❤️', mnemonic: '겨울에 "스키(すき) 타는 걸 좋아하다(すきだ)!"', wordJp: 'すきな おんがく (好きな 音楽)', wordKr: '좋아하는 음악', exJp: 'わたしは ねこが だいすきです。', exKr: '저는 고양이를 매우 좋아합니다.' },
+    { id: 'a32', num: 32, type: 'na', kana: 'きらいだ', kanji: '嫌いだ', romaji: 'kiraida', meaning: '싫어하다', emoji: '🙅', mnemonic: '"키 작은 라이(きらい)벌이 괴롭히는 건 싫어하다!"', wordJp: 'きらいな たべもの (嫌いな 食べ物)', wordKr: '싫어하는 음식', exJp: 'むしが きらいです。', exKr: '벌레를 싫어합니다.' },
+    { id: 'a33', num: 33, type: 'na', kana: 'じょうずだ', kanji: '上手だ', romaji: 'jouzuda', meaning: '능숙하다, 잘하다', emoji: '🏆', mnemonic: '영화 "죠즈(じょうず) 상어처럼 수영을 능숙하게 잘하다!"', wordJp: 'うたが じょうずだ (歌が 上手だ)', wordKr: '노래를 잘하다', exJp: 'たなかさんは にほんごが じょうずです。', exKr: '다나카 씨는 일본어를 잘합니다.' },
+    { id: 'a34', num: 34, type: 'na', kana: 'へただ', kanji: '下手だ', romaji: 'hetada', meaning: '서툴다, 못하다', emoji: '💦', mnemonic: '요리를 태우고 머리를 긁적이며 "헤~ 다(へただ) 태웠네, 아직 서툴다!"', wordJp: 'りょうりが へただ (料理が 下手だ)', wordKr: '요리가 서툴다', exJp: 'わたしは えが へたです。', exKr: '저는 그림을 못 그립니다.' },
+    { id: 'a35', num: 35, type: 'na', kana: 'とくいだ', kanji: '得意だ', romaji: 'tokuida', meaning: '자신 있다, 특기이다', emoji: '😎', mnemonic: '"톡(とく) 까놓고 말해서 이 요리가 내 특기(とくいだ)야!"', wordJp: 'とくいな りょうり (得意な 料理)', wordKr: '자신 있는 요리', exJp: 'かれは テニスが とくいです。', exKr: '그는 테니스에 자신이 있습니다.' },
+    { id: 'a36', num: 36, type: 'na', kana: 'にがてだ', kanji: '苦手だ', romaji: 'nigateda', meaning: '서투르다, 대하기 거북하다', emoji: '😖', mnemonic: '"니가 테(にがて)스트 해봐, 난 이 과목은 서툴고 약해!"', wordJp: 'にがてな かもく (苦手な 科目)', wordKr: '취약한 과목', exJp: 'あさ はやく おきるのが にがてです。', exKr: '아침 일찍 일어나는 것에 약합니다.' },
+    { id: 'a37', num: 37, type: 'na', kana: 'しずかだ', kanji: '静かだ', romaji: 'shizukada', meaning: '조용하다', emoji: '🤫', mnemonic: '도서관에서 손가락을 입에 대고 "쉬~ 지금(しずか)은 조용히!"', wordJp: 'しずかな としょかん (静かな 図書館)', wordKr: '조용한 도서관', exJp: 'ここは とても しずかな まちです。', exKr: '여기는 매우 조용한 동네입니다.' },
+    { id: 'a38', num: 38, type: 'na', kana: 'にぎやかだ', kanji: '賑やかだ', romaji: 'nigiyakada', meaning: '번화하다, 북적거리다', emoji: '🎉', mnemonic: '"니기(にぎ)리 초밥 축제로 거리가 북적거리다(にぎやかだ)!"', wordJp: 'にぎやかな とおり (賑やかな 通り)', wordKr: '번화한 거리', exJp: 'しゅうまつの えきは にぎやかです。', exKr: '주말 역은 북적거립니다.' },
+    { id: 'a39', num: 39, type: 'na', kana: 'ひまだ', kanji: '暇だ', romaji: 'himada', meaning: '한가하다', emoji: '🥱', mnemonic: '할 일이 없어서 "히마(ひま)리 없이 하품하며 한가하다!"', wordJp: 'ひまな じかん (暇な 時間)', wordKr: '한가한 시간', exJp: 'きょうの ごごは ひまですか。', exKr: '오늘 오후는 한가합니까?' },
+    { id: 'a40', num: 40, type: 'na', kana: 'しんせつだ', kanji: '親切だ', romaji: 'shinsetsuda', meaning: '친절하다', emoji: '🤝', mnemonic: '한국어 "친절"과 발음이 비슷! "신세(しんせつ)를 졌는데도 친절하다!"', wordJp: 'しんせつな てんいん (親切な 店員)', wordKr: '친절한 점원', exJp: 'あの ひとは だれにでも しんせつです。', exKr: '저 사람은 누구에게나 친절합니다.' },
+    { id: 'a41', num: 41, type: 'na', kana: 'べんりだ', kanji: '便利だ', romaji: 'benrida', meaning: '편리하다', emoji: '📱', mnemonic: '한국어 "편리(便利)" → 일본어 발음 "벤리다(べんりだ)"!', wordJp: 'べんりな アプリ (便利な アプリ)', wordKr: '편리한 앱', exJp: 'ちかてつは はやくて べんりです。', exKr: '지하철은 빠르고 편리합니다.' },
+    { id: 'a42', num: 42, type: 'na', kana: 'ふべんだ', kanji: '不便だ', romaji: 'fubenda', meaning: '불편하다', emoji: '🚧', mnemonic: '편리(べんり) 앞에 부정(ふ)이 붙어 "후벤다(ふべんだ) 불편하다!"', wordJp: 'ふべんな ばしょ (不便な 場所)', wordKr: '불편한 장소', exJp: 'くるまが ないと すこし ふべんです。', exKr: '차가 없으면 조금 불편합니다.' },
+    { id: 'a43', num: 43, type: 'na', kana: 'ゆうめいだ', kanji: '有名だ', romaji: 'yuumeida', meaning: '유명하다', emoji: '🌟', mnemonic: '한국어 "유명(有名)"과 발음도 거의 똑같은 "유우메이다(ゆうめいだ)"!', wordJp: 'ゆうめいな かしゅ (有名な 歌手)', wordKr: '유명한 가수', exJp: 'きょうとは ふるい おてらで ゆうめいです。', exKr: '교토는 오래된 절로 유명합니다.' },
+    { id: 'a44', num: 44, type: 'na', kana: 'げんきだ', kanji: '元気だ', romaji: 'genkida', meaning: '건강하다, 활기차다', emoji: '💪', mnemonic: '"오겡키(げんき) 데스카?" 원기 왕성하고 활기차다!', wordJp: 'げんきな こども (元気な 子供)', wordKr: '활기찬 아이', exJp: 'おじいさんは いつも げんきです。', exKr: '할아버지는 언제나 건강하십니다.' },
+    { id: 'a45', num: 45, type: 'na', kana: 'かんたんだ', kanji: '簡単だ', romaji: 'kantanda', meaning: '간단하다', emoji: '👌', mnemonic: '한국어 "간단"과 발음이 거의 같은 "칸탄다(かんたんだ)"!', wordJp: 'かんたんな りょうり (簡単な 料理)', wordKr: '간단한 요리', exJp: 'この ゲームの ルールは かんたんです。', exKr: '이 게임의 규칙은 간단합니다.' },
+    { id: 'a46', num: 46, type: 'na', kana: 'ふくざつだ', kanji: '複雑だ', romaji: 'fukuzatsuda', meaning: '복잡하다', emoji: '🕸️', mnemonic: '한국어 "복잡" → 일본어 발음 "후쿠자츠다(ふくざつだ)"!', wordJp: 'ふくざつな きもち (複雑な 気持ち)', wordKr: '복잡한 기분', exJp: 'とうきょうの ろせんずは ふくざつです。', exKr: '도쿄의 노선도는 복잡합니다.' },
+    { id: 'a47', num: 47, type: 'na', kana: 'きれいだ', kanji: 'きれいだ', altAnswers: ['きれいだ', 'きれい', '綺麗だ'], romaji: 'kireida', meaning: '예쁘다, 깨끗하다', emoji: '🌸', mnemonic: '"키레이(きれいだ)"한 벚꽃이 예쁘고 방도 깨끗하다! (대표 な형용사)', wordJp: 'きれいな はな (きれいな 花)', wordKr: '예쁜 꽃', exJp: 'へやを きれいに そうじしました。', exKr: '방을 깨끗하게 청소했습니다.' },
+    { id: 'a48', num: 48, type: 'na', kana: 'ていねいだ', kanji: '丁寧だ', romaji: 'teineida', meaning: '정중하다, 공손하다', emoji: '🙇', mnemonic: '"테이네이(ていねいだ)~" 두 손 모아 정중하고 공손하게 인사하는 모습!', wordJp: 'ていねいな せつめい (丁寧な 説明)', wordKr: '정중한 설명', exJp: 'ていねいな ことばで はなします。', exKr: '정중한 말씨로 이야기합니다.' },
+    { id: 'a49', num: 49, type: 'na', kana: 'たいせつだ', kanji: '大切だ', romaji: 'taisetsuda', meaning: '소중하다, 중요하다', emoji: '💎', mnemonic: '"타이세츠(たいせつ)한 보물처럼 가족과 시간을 소중히 여기다!"', wordJp: 'たいせつな やくそく (大切な 約束)', wordKr: '소중한 약속', exJp: 'けんこうが いちばん たいせつです。', exKr: '건강이 가장 중요합니다.' },
+    { id: 'a50', num: 50, type: 'na', kana: 'たいへんだ', kanji: '大変だ', romaji: 'taihenda', meaning: '힘들다, 큰일이다', emoji: '😰', mnemonic: '"타이헨(たいへん)다! 큰일 났네, 오늘 업무가 너무 힘들다!"', wordJp: 'たいへんな しごと (大変な 仕事)', wordKr: '힘든 일', exJp: 'きょうは あめが つよくて たいへんでした。', exKr: '오늘은 비가 세차서 힘들었습니다.' },
+    { id: 'a51', num: 51, type: 'na', kana: 'あんぜんだ', kanji: '安全だ', romaji: 'anzenda', meaning: '안전하다', emoji: '🛡️', mnemonic: '한국어 "안전(安全)"과 발음이 똑같은 "안젠다(あんぜんだ)"!', wordJp: 'あんぜんな ばしょ (安全な 場所)', wordKr: '안전한 장소', exJp: 'この みずは のんでも あんぜんです。', exKr: '이 물은 마셔도 안전합니다.' },
+    { id: 'a52', num: 52, type: 'na', kana: 'きけんだ', kanji: '危険だ', romaji: 'kikenda', meaning: '위험하다', emoji: '⚠️', mnemonic: '공사장 표지판에 적힌 "키켄(きけんだ)! 위험하다!"', wordJp: 'きけんな うんてん (危険な 運転)', wordKr: '위험한 운전', exJp: 'よる ひとりで あるくのは きけんです。', exKr: '밤에 혼자 걷는 것은 위험합니다.' },
+    { id: 'a53', num: 53, type: 'na', kana: 'じゆうだ', kanji: '自由だ', romaji: 'jiyuuda', meaning: '자유롭다', emoji: '🕊️', mnemonic: '한국어 "자유(自由)" → 일본어 발음 "지유우다(じゆうだ)"!', wordJp: 'じゆうな じかん (自由な 時間)', wordKr: '자유로운 시간', exJp: 'あしたは よていが なくて じゆうです。', exKr: '내일은 일정이 없어서 자유롭습니다.' },
+    { id: 'a54', num: 54, type: 'na', kana: 'ひつようだ', kanji: '必要だ', romaji: 'hitsuyouda', meaning: '필요하다', emoji: '🔑', mnemonic: '한국어 "필요(必要)" → 일본어 발음 "히츠요우다(ひつようだ)"!', wordJp: 'ひつような しょるい (必要な 書類)', wordKr: '필요한 서류', exJp: 'りょこうには パスポートが ひつようです。', exKr: '여행에는 여권이 필요합니다.' },
+    { id: 'a55', num: 55, type: 'na', kana: 'ふしぎだ', kanji: '不思議だ', romaji: 'fushigida', meaning: '신기하다, 이상하다', emoji: '🪄', mnemonic: '마술쇼를 보며 "후시기(ふしぎ)하네~ 참 신기하다!"', wordJp: 'ふしぎな はなし (不思議な 話)', wordKr: '신기한 이야기', exJp: 'ふしぎな おとが きこえました。', exKr: '신기한 소리가 들렸습니다.' },
+    { id: 'a56', num: 56, type: 'na', kana: 'ざんねんだ', kanji: '残念だ', romaji: 'zannenda', meaning: '아쉽다, 유감이다', emoji: '😢', mnemonic: '아깝게 게임에서 졌을 때 "잔넨(ざんねんだ)~ 아쉽다!"', wordJp: 'ざんねんな けっか (残念な 結果)', wordKr: '아쉬운 결과', exJp: 'しあいに まけて ざんねんです。', exKr: '시합에 져서 아쉽습니다.' },
+    { id: 'a57', num: 57, type: 'na', kana: 'しんぱいだ', kanji: '心配だ', romaji: 'shinpaida', meaning: '걱정스럽다', emoji: '😟', mnemonic: '"심장이 파이(しんぱい)도록 내일 시험이 걱정스럽다!"', wordJp: 'しんぱいな ニュース (心配な ニュース)', wordKr: '걱정스러운 뉴스', exJp: 'あしたの しけんが しんぱいです。', exKr: '내일 시험이 걱정됩니다.' },
+    { id: 'a58', num: 58, type: 'na', kana: 'らくだ', kanji: '楽だ', romaji: 'rakuda', meaning: '편하다, 안락하다', emoji: '🛋️', mnemonic: '사막을 걸어가는 대신 "낙타(らくだ)를 타니 몸이 아주 편하다!"', wordJp: 'らくな ふく (楽な 服)', wordKr: '편한 옷', exJp: 'スニーカーは あるくのが らくです。', exKr: '운동화는 걷기가 편합니다.' },
+    { id: 'a59', num: 59, type: 'na', kana: 'まじめだ', kanji: '真面目だ', romaji: 'majimeda', meaning: '성실하다, 진지하다', emoji: '🤓', mnemonic: '"마지메(まじめ)한 학생은 지각도 안 하고 늘 성실하다!"', wordJp: 'まじめな がくせい (真面目な 学生)', wordKr: '성실한 학생', exJp: 'かれは いつも まじめに はたらきます。', exKr: '그는 언제나 성실하게 일합니다.' },
+    { id: 'a60', num: 60, type: 'na', kana: 'ゆたかだ', kanji: '豊かだ', romaji: 'yutakada', meaning: '풍부하다, 넉넉하다', emoji: '🌾', mnemonic: '"유타카(ゆたか)한 대자연과 풍부한 수확!"', wordJp: 'ゆたかな しぜん (豊かな 自然)', wordKr: '풍요로운 자연', exJp: 'あの ひとは けいけんが ゆたかです。', exKr: '저 사람은 경험이 풍부합니다.' }
+  ];
+
+  // 기초 그림 명사 20선 (이미지 퀴즈용)
+  const IMAGE_NOUN_DB = [
+    { emoji: "🍎", ko: "사과", kana: "りんご", romaji: "ringo", hint: "3글자 · り로 시작해요", altAnswers: ["りんご"] },
+    { emoji: "🐱", ko: "고양이", kana: "ねこ", romaji: "neko", hint: "2글자 · ね로 시작해요", altAnswers: ["ねこ", "こねこ"] },
+    { emoji: "🐶", ko: "강아지", kana: "いぬ", romaji: "inu", hint: "2글자 · い로 시작해요", altAnswers: ["いぬ", "こいぬ"] },
+    { emoji: "☂️", ko: "우산", kana: "かさ", romaji: "kasa", hint: "2글자 · か로 시작해요", altAnswers: ["かさ"] },
+    { emoji: "🍣", ko: "초밥", kana: "すし", romaji: "sushi", hint: "2글자 · す로 시작해요", altAnswers: ["すし", "おすし"] },
+    { emoji: "🐮", ko: "소", kana: "うし", romaji: "ushi", hint: "2글자 · う로 시작해요", altAnswers: ["うし"] },
+    { emoji: "🌙", ko: "달", kana: "つき", romaji: "tsuki", hint: "2글자 · つ로 시작해요", altAnswers: ["つき"] },
+    { emoji: "⭐", ko: "별", kana: "ほし", romaji: "hoshi", hint: "2글자 · ほ로 시작해요", altAnswers: ["ほし"] },
+    { emoji: "⛰️", ko: "산", kana: "やま", romaji: "yama", hint: "2글자 · や로 시작해요", altAnswers: ["やま"] },
+    { emoji: "🌸", ko: "벚꽃", kana: "さくら", romaji: "sakura", hint: "3글자 · さ로 시작해요", altAnswers: ["さくら"] },
+    { emoji: "🐟", ko: "물고기", kana: "さかな", romaji: "sakana", hint: "3글자 · さ로 시작해요", altAnswers: ["さかな", "うお"] },
+    { emoji: "🚗", ko: "자동차", kana: "くるま", romaji: "kuruma", hint: "3글자 · く로 시작해요", altAnswers: ["くるま"] },
+    { emoji: "📚", ko: "책", kana: "ほん", romaji: "hon", hint: "2글자 · ほ로 시작해요", altAnswers: ["ほん"] },
+    { emoji: "💧", ko: "물", kana: "みず", romaji: "mizu", hint: "2글자 · み로 시작해요", altAnswers: ["みず", "おみず"] },
+    { emoji: "🌷", ko: "꽃", kana: "はな", romaji: "hana", hint: "2글자 · は로 시작해요", altAnswers: ["はな"] },
+    { emoji: "❄️", ko: "눈(Snow)", kana: "ゆき", romaji: "yuki", hint: "2글자 · ゆ로 시작해요", altAnswers: ["ゆき"] },
+    { emoji: "🌧️", ko: "비", kana: "あめ", romaji: "ame", hint: "2글자 · あ로 시작해요", altAnswers: ["あめ"] },
+    { emoji: "🍑", ko: "복숭아", kana: "もも", romaji: "momo", hint: "2글자 · も 두 번", altAnswers: ["もも"] },
+    { emoji: "👂", ko: "귀", kana: "みみ", romaji: "mimi", hint: "2글자 · み 두 번", altAnswers: ["みみ"] },
+    { emoji: "✋", ko: "손", kana: "て", romaji: "te", hint: "1글자 · て", altAnswers: ["て"] }
+  ];
+
+  // =========================================================================
+  // 3. 정밀 SVG 획순 결합 엔진 (기본 46자 + 탁음 + 반탁음 + 요음)
+  // =========================================================================
+  const BASE_STROKE_MAP = {};
+  HIRAGANA_DB.forEach(item => { BASE_STROKE_MAP[item.char] = item.strokes; });
+
+  const DAKUTEN_MAP = {
+    "が":"か", "ぎ":"き", "ぐ":"く", "げ":"け", "ご":"こ",
+    "ざ":"さ", "じ":"し", "ず":"す", "ぜ":"せ", "ぞ":"そ",
+    "だ":"た", "ぢ":"ち", "づ":"つ", "で":"て", "ど":"と",
+    "ば":"は", "び":"ひ", "ぶ":"ふ", "べ":"へ", "ぼ":"ほ"
+  };
+
+  const HANDAKUTEN_MAP = { "ぱ":"は", "ぴ":"ひ", "ぷ":"ふ", "ぺ":"へ", "ぽ":"ほ" };
+  const SMALL_KANA_MAP = { "ゃ":"や", "ゅ":"ゆ", "ょ":"よ", "っ":"つ", "ぁ":"あ", "ぃ":"い", "ぅ":"う", "ぇ":"え", "ぉ":"お" };
+
+  function scaleSvgPath(pathStr, scale = 0.66, offsetX = 16, offsetY = 26) {
+    return pathStr.replace(/(-?\d+(\.\d+)?)\s+(-?\d+(\.\d+)?)/g, (match, x, _, y) => {
+      const nx = (parseFloat(x) * scale + offsetX).toFixed(1);
+      const ny = (parseFloat(y) * scale + offsetY).toFixed(1);
+      return `${nx} ${ny}`;
+    });
+  }
+
+  function getKanaStrokes(ch) {
+    if (BASE_STROKE_MAP[ch]) return [...BASE_STROKE_MAP[ch]];
+    if (DAKUTEN_MAP[ch]) {
+      const base = BASE_STROKE_MAP[DAKUTEN_MAP[ch]] || [];
+      return [...base, "M 76 14 L 83 24", "M 86 10 L 93 20"];
+    }
+    if (HANDAKUTEN_MAP[ch]) {
+      const base = BASE_STROKE_MAP[HANDAKUTEN_MAP[ch]] || [];
+      return [...base, "M 80 16 C 80 10 92 10 92 16 C 92 22 80 22 80 16"];
+    }
+    if (SMALL_KANA_MAP[ch]) {
+      const base = BASE_STROKE_MAP[SMALL_KANA_MAP[ch]] || [];
+      return base.map(p => scaleSvgPath(p, 0.66, 16, 26));
+    }
+    return ["M 20 50 L 80 50"];
+  }
+
+  function getStrokeStartCoord(pathStr) {
+    const m = pathStr.match(/M\s*([\d.]+)\s+([\d.]+)/);
+    if (m) return { x: parseFloat(m[1]), y: parseFloat(m[2]) };
+    return { x: 20, y: 20 };
+  }
+
+  // =========================================================================
+  // 4. 전역 상태 관리 & 로컬 스토리지
+  // =========================================================================
+  const STORAGE_KEY = 'jp_all_in_one_master_v1';
+  let currentTrack = 'kana'; // 'kana' (히라가나 46자) | 'adj' (형용사 60선)
+  let activeScreen = 'home';
+
+  let userState = {
+    records: {}, // { [id]: { status: 'unlearned'|'hard'|'mastered', fav: false, correct: 0, wrong: 0 } }
+    fcCount: 0,
+    quizTotal: 0,
+    quizCorrect: 0,
+    bestTimeAttack: 0
+  };
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        userState = { ...userState, ...parsed };
+      }
+    } catch (e) {}
+    [...HIRAGANA_DB, ...ADJECTIVES_DB].forEach(item => {
+      if (!userState.records[item.id]) {
+        userState.records[item.id] = { status: 'unlearned', fav: false, correct: 0, wrong: 0 };
+      }
+    });
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(userState));
+    } catch (e) {}
+    updateGlobalProgressUI();
+  }
+
+  function getRecord(id) {
+    if (!userState.records[id]) {
+      userState.records[id] = { status: 'unlearned', fav: false, correct: 0, wrong: 0 };
+    }
+    return userState.records[id];
+  }
+
+  function getTrackList(track = currentTrack) {
+    return track === 'kana' ? HIRAGANA_DB : ADJECTIVES_DB;
+  }
+
+  function updateGlobalProgressUI() {
+    let kanaMaster = 0, adjMaster = 0, totalFav = 0, totalHard = 0;
+    HIRAGANA_DB.forEach(k => {
+      const r = getRecord(k.id);
+      if (r.status === 'mastered') kanaMaster++;
+      if (r.status === 'hard') totalHard++;
+      if (r.fav) totalFav++;
+    });
+    ADJECTIVES_DB.forEach(a => {
+      const r = getRecord(a.id);
+      if (r.status === 'mastered') adjMaster++;
+      if (r.status === 'hard') totalHard++;
+      if (r.fav) totalFav++;
+    });
+
+    const kanaPct = Math.round((kanaMaster / HIRAGANA_DB.length) * 100);
+    const adjPct = Math.round((adjMaster / ADJECTIVES_DB.length) * 100);
+
+    if (currentTrack === 'kana') {
+      document.getElementById('headerBadge').textContent = `50음도 ${kanaPct}% (${kanaMaster}/46)`;
+    } else {
+      document.getElementById('headerBadge').textContent = `형용사 ${adjPct}% (${adjMaster}/60)`;
+    }
+
+    const kp = document.getElementById('homeKanaPercent');
+    if (kp) kp.textContent = `${kanaMaster} / 46 (${kanaPct}%)`;
+    const kb = document.getElementById('homeKanaBar');
+    if (kb) kb.style.width = `${kanaPct}%`;
+
+    const ap = document.getElementById('homeAdjPercent');
+    if (ap) ap.textContent = `${adjMaster} / 60 (${adjPct}%)`;
+    const ab = document.getElementById('homeAdjBar');
+    if (ab) ab.style.width = `${adjPct}%`;
+
+    const sm = document.getElementById('homeStatMastered');
+    if (sm) sm.textContent = `✅ 총 암기: ${kanaMaster + adjMaster}/106`;
+    const sf = document.getElementById('homeStatFav');
+    if (sf) sf.textContent = `⭐ 즐겨찾기: ${totalFav}개`;
+    const sh = document.getElementById('homeStatHard');
+    if (sh) sh.textContent = `🔥 복습 필요: ${totalHard}개`;
+  }
+
+  // 트랙 스위치 (히라가나 46자 <-> 필수 형용사 60선)
+  function switchTrack(track) {
+    currentTrack = track;
+    document.getElementById('tabTrackKana').classList.toggle('active', track === 'kana');
+    document.getElementById('tabTrackAdj').classList.toggle('active', track === 'adj');
+    updateGlobalProgressUI();
+    navigate(activeScreen);
+  }
+
+  // 일본어 TTS 발음 재생
+  function speakJapanese(text) {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.88;
+    const voices = window.speechSynthesis.getVoices();
+    const jpVoice = voices.find(v => v.lang.includes('ja') || v.lang.includes('JP'));
+    if (jpVoice) u.voice = jpVoice;
+    window.speechSynthesis.speak(u);
+  }
+
+  // =========================================================================
+  // 5. 네비게이션 라우터
+  // =========================================================================
+  function navigate(target) {
+    stopTimeAttackTimer();
+    stopStrokeAnimTimer();
+    activeScreen = target;
+
+    document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+    const sc = document.getElementById(`screen-${target}`);
+    if (sc) sc.classList.add('active');
+
+    document.getElementById('btnBack').style.display = target === 'home' ? 'none' : 'inline-flex';
+    document.querySelectorAll('.nav-item').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.target === target);
+    });
+
+    if (target === 'home') updateGlobalProgressUI();
+    if (target === 'table') initTableScreen();
+    if (target === 'flashcard') initFlashcards();
+    if (target === 'stroke') initStrokeScreen();
+    if (target === 'mnemonic') initMnemonicScreen();
+    if (target === 'words') initWordsScreen();
+    if (target === 'quiz') startQuizMode('gameA');
+    if (target === 'imagegame') initImageGame();
+    if (target === 'stats') renderStatsScreen();
+
+    window.scrollTo(0, 0);
+  }
+
+  // =========================================================================
+  // 6. 도감 표 화면 (트랙 A: 50음도 5열 표 / 트랙 B: 형용사 60선 도감)
+  // =========================================================================
+  let currentTableFilter = 'all';
+
+  function initTableScreen() {
+    currentTableFilter = 'all';
+    renderTableFilterChips();
+    renderTableContent();
+  }
+
+  function renderTableFilterChips() {
+    const row = document.getElementById('tableFilterRow');
+    const total = getTrackList().length;
+    let chips = [
+      { key: 'all', label: `전체 (${total})` },
+      { key: 'fav', label: '⭐ 즐겨찾기' }
+    ];
+    if (currentTrack === 'adj') {
+      chips.push({ key: 'i', label: 'い형용사 (30)' }, { key: 'na', label: 'な형용사 (30)' });
+    }
+    chips.push(
+      { key: 'unlearned', label: '⚪ 미학습' },
+      { key: 'hard', label: '🔥 어려움' },
+      { key: 'mastered', label: '✅ 암기완료' }
+    );
+
+    row.innerHTML = chips.map(c => `
+      <button class="tab-chip ${currentTableFilter === c.key ? 'active' : ''}" onclick="setTableFilter('${c.key}')">${c.label}</button>
+    `).join('');
+  }
+
+  function setTableFilter(key) {
+    currentTableFilter = key;
+    renderTableFilterChips();
+    renderTableContent();
+  }
+
+  function getStatusMeta(status) {
+    if (status === 'mastered') return { cls: 'status-mastered', tileCls: 'tile-mastered', label: '✅ 완료' };
+    if (status === 'hard') return { cls: 'status-hard', tileCls: 'tile-hard', label: '🔥 어려움' };
+    return { cls: 'status-unlearned', tileCls: '', label: '⚪ 미학습' };
+  }
+
+  function renderTableContent() {
+    const area = document.getElementById('tableContentArea');
+
+    if (currentTrack === 'kana') {
+      // 트랙 A: 히라가나 50음도 5열 그리드
+      let html = '';
+      GOJUON_ROWS.forEach(row => {
+        html += `<div class="gojuon-row-title">${row.label}</div><div class="gojuon-grid">`;
+        row.chars.forEach(ch => {
+          if (!ch) {
+            html += `<div class="kana-tile empty">-</div>`;
+            return;
+          }
+          const idx = HIRAGANA_DB.findIndex(k => k.char === ch);
+          const item = HIRAGANA_DB[idx];
+          const rec = getRecord(item.id);
+          const meta = getStatusMeta(rec.status);
+
+          let match = true;
+          if (currentTableFilter === 'fav') match = rec.fav;
+          else if (['unlearned', 'hard', 'mastered'].includes(currentTableFilter)) match = rec.status === currentTableFilter;
+
+          html += `
+            <div class="kana-tile ${meta.tileCls}" style="${match ? '' : 'opacity:0.2;'}" onclick="openItemDetailModal('kana', ${idx})">
+              <div style="width:100%; display:flex; justify-content:space-between; align-items:center; padding:0 2px;">
+                <span style="font-size:0.6rem; color:var(--text-sub);">${item.romaji}</span>
+                <button class="fav-btn" style="font-size:0.9rem;" onclick="toggleTileFav(event, '${item.id}')">${rec.fav ? '⭐' : '☆'}</button>
+              </div>
+              <div class="kana-tile-char jp" lang="ja">${item.char}</div>
+              <div class="kana-tile-romaji">${item.romaji} [${item.ko}]</div>
+              <span class="status-pill ${meta.cls}">${meta.label}</span>
+            </div>
+          `;
+        });
+        html += `</div>`;
+      });
+      area.innerHTML = html;
+    } else {
+      // 트랙 B: 필수 형용사 60선 히라가나 중심 도감
+      const filtered = ADJECTIVES_DB.map((item, idx) => ({ item, idx })).filter(({ item }) => {
+        const rec = getRecord(item.id);
+        if (currentTableFilter === 'fav') return rec.fav;
+        if (currentTableFilter === 'i') return item.type === 'i';
+        if (currentTableFilter === 'na') return item.type === 'na';
+        if (['unlearned', 'hard', 'mastered'].includes(currentTableFilter)) return rec.status === currentTableFilter;
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        area.innerHTML = `<div class="card-box" style="text-align:center; color:var(--text-sub);">조건에 맞는 형용사가 없습니다.</div>`;
+        return;
+      }
+
+      area.innerHTML = `<div class="adj-grid">` + filtered.map(({ item, idx }) => {
+        const rec = getRecord(item.id);
+        const meta = getStatusMeta(rec.status);
+        return `
+          <div class="adj-tile ${meta.tileCls}" onclick="openItemDetailModal('adj', ${idx})">
+            <div class="tile-top">
+              <span class="type-tag">${item.type === 'i' ? 'い형용사' : 'な형용사'}</span>
+              <div style="display:flex; align-items:center; gap:3px;">
+                <span class="status-pill ${meta.cls}">${meta.label}</span>
+                <button class="fav-btn" onclick="toggleTileFav(event, '${item.id}')">${rec.fav ? '⭐' : '☆'}</button>
+              </div>
+            </div>
+            <div class="tile-kana-main jp" lang="ja">${item.kana}</div>
+            <div class="tile-kanji-sub jp" lang="ja">${item.kanji} [${item.romaji}]</div>
+            <div class="tile-meaning">${item.emoji} ${item.meaning}</div>
+          </div>
+        `;
+      }).join('') + `</div>`;
+    }
+  }
+
+  function toggleTileFav(e, id) {
+    e.stopPropagation();
+    const rec = getRecord(id);
+    rec.fav = !rec.fav;
+    saveState();
+    renderTableContent();
+  }
+
+  // =========================================================================
+  // 7. 상세 학습 모달 (히라가나 46자 & 형용사 60선 통합)
+  // =========================================================================
+  let modalTrack = 'kana';
+  let modalIdx = 0;
+
+  function buildConjugations(item) {
+    if (item.type === 'i') {
+      const base = item.num === 8 ? 'よい' : item.kana;
+      const stem = base.slice(0, -1);
+      return [
+        { label: '기본형 (사전형)', val: `${item.kana} (${item.kanji})` },
+        { label: '명사 수식형 (~한)', val: `${item.kana} + 명사` },
+        { label: '정중 현재 긍정', val: `${item.kana}です` },
+        { label: '정중 현재 부정', val: `${stem}くないです` },
+        { label: '정중 과거 긍정', val: `${stem}かったです` },
+        { label: '정중 과거 부정', val: `${stem}くなかったです` }
+      ];
+    } else {
+      const stemKana = item.kana.replace(/だ$/, '');
+      const stemKanji = item.kanji.replace(/だ$/, '');
+      return [
+        { label: '기본형 (사전형)', val: `${item.kana} (${item.kanji})` },
+        { label: '명사 수식형 (~한)', val: `${stemKana}な (${stemKanji}な) + 명사` },
+        { label: '정중 현재 긍정', val: `${stemKana}です` },
+        { label: '정중 현재 부정', val: `${stemKana}じゃありません` },
+        { label: '정중 과거 긍정', val: `${stemKana}でした` },
+        { label: '정중 과거 부정', val: `${stemKana}じゃありませんでした` }
+      ];
+    }
+  }
+
+  function openItemDetailModal(track, idx) {
+    modalTrack = track;
+    modalIdx = Number(idx);
+    const list = getTrackList(track);
+    const item = list[modalIdx];
+    if (!item) return;
+
+    if (track === 'kana') {
+      document.getElementById('modalTypeTag').textContent = `히라가나 · ${item.row} (${item.strokes.length}획)`;
+      document.getElementById('modalMainKana').textContent = item.char;
+      document.getElementById('modalSubText').textContent = `발음: ${item.romaji} [${item.ko}]`;
+      document.getElementById('modalMeaning').textContent = `${item.emoji} ${item.phrase}`;
+      document.getElementById('modalMnemonicBox').innerHTML = `<strong>💡 모양·발음 연상 암기법:</strong><br>${item.story}`;
+      document.getElementById('modalWordsBox').innerHTML = `
+        <strong>📖 포함 기초 일본어 단어:</strong>
+        ${item.words.map(w => `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+            <span>${w.emoji} <strong class="jp" lang="ja">${w.jp}</strong> [${w.romaji}] — ${w.ko}</span>
+            <button class="btn btn-outline" style="padding:3px 8px; font-size:0.75rem;" onclick="speakJapanese('${w.jp}')">🔊</button>
+          </div>
+        `).join('')}
+      `;
+      document.getElementById('modalConjWrap').style.display = 'none';
+    } else {
+      document.getElementById('modalTypeTag').textContent = `${item.num}번 · ${item.type === 'i' ? 'い형용사' : 'な형용사'}`;
+      document.getElementById('modalMainKana').textContent = item.kana;
+      document.getElementById('modalSubText').textContent = `아래 한자 표기: ${item.kanji} [${item.romaji}]`;
+      document.getElementById('modalMeaning').textContent = `${item.emoji} ${item.meaning}`;
+      document.getElementById('modalMnemonicBox').innerHTML = `<strong>💡 연상 암기법:</strong><br>${item.mnemonic}`;
+      document.getElementById('modalWordsBox').innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong>📘 대표 표현 & 초보자 예문</strong>
+          <button class="btn btn-outline" style="padding:3px 8px; font-size:0.75rem;" onclick="speakJapanese('${item.exJp}')">🔊 예문 듣기</button>
+        </div>
+        <div class="jp" lang="ja" style="margin-top:6px; font-weight:800; color:var(--primary);">• ${item.wordJp} : ${item.wordKr}</div>
+        <div class="jp" lang="ja" style="margin-top:4px; font-weight:700;">• ${item.exJp}</div>
+        <div style="color:var(--text-sub); font-size:0.8rem;">→ ${item.exKr}</div>
+      `;
+      const conjs = buildConjugations(item);
+      document.getElementById('modalConjTable').innerHTML = conjs.map(c => `<tr><th>${c.label}</th><td><strong>${c.val}</strong></td></tr>`).join('');
+      document.getElementById('modalConjWrap').style.display = 'block';
+    }
+
+    updateModalButtons();
+    document.getElementById('detailModal').classList.add('open');
+  }
+
+  function updateModalButtons() {
+    const item = getTrackList(modalTrack)[modalIdx];
+    const rec = getRecord(item.id);
+    document.getElementById('modalFavBtn').textContent = rec.fav ? '⭐ 즐겨찾기됨 (F)' : '☆ 즐겨찾기 (F)';
+
+    const bUn = document.getElementById('modalBtnUnlearned');
+    const bHa = document.getElementById('modalBtnHard');
+    const bMa = document.getElementById('modalBtnMastered');
+    [bUn, bHa, bMa].forEach(b => { b.style.borderWidth = '1px'; b.style.background = '#fff'; });
+    if (rec.status === 'unlearned') { bUn.style.borderWidth = '2px'; bUn.style.background = '#f1f5f9'; }
+    if (rec.status === 'hard') { bHa.style.borderWidth = '2px'; bHa.style.background = '#fef3c7'; }
+    if (rec.status === 'mastered') { bMa.style.borderWidth = '2px'; bMa.style.background = '#d1fae5'; }
+  }
+
+  function speakFromModal() {
+    const item = getTrackList(modalTrack)[modalIdx];
+    if (item) speakJapanese(modalTrack === 'kana' ? item.char : item.kana);
+  }
+
+  function toggleFavFromModal() {
+    const item = getTrackList(modalTrack)[modalIdx];
+    const rec = getRecord(item.id);
+    rec.fav = !rec.fav;
+    saveState();
+    updateModalButtons();
+    if (activeScreen === 'table') renderTableContent();
+    if (activeScreen === 'stats') renderStatsScreen();
+  }
+
+  function setStatusFromModal(st) {
+    const item = getTrackList(modalTrack)[modalIdx];
+    getRecord(item.id).status = st;
+    saveState();
+    updateModalButtons();
+    if (activeScreen === 'table') renderTableContent();
+    if (activeScreen === 'stats') renderStatsScreen();
+  }
+
+  function jumpFromModal(targetScreen) {
+    document.getElementById('detailModal').classList.remove('open');
+    if (currentTrack !== modalTrack) {
+      currentTrack = modalTrack;
+      document.getElementById('tabTrackKana').classList.toggle('active', currentTrack === 'kana');
+      document.getElementById('tabTrackAdj').classList.toggle('active', currentTrack === 'adj');
+    }
+    if (targetScreen === 'stroke') currentStrokeIdx = modalIdx;
+    if (targetScreen === 'mnemonic') currentMnemIdx = modalIdx;
+    navigate(targetScreen);
+  }
+
+  function closeDetailModal(e) {
+    if (!e || e.target.id === 'detailModal') {
+      document.getElementById('detailModal').classList.remove('open');
+    }
+  }
+
+  // =========================================================================
+  // 8. 플래시카드 학습 (9가지 모드)
+  // =========================================================================
+  let fcDeck = [];
+  let fcIndex = 0;
+
+  function shuffleArray(arr) {
+    const copy = [...arr];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function initFlashcards() {
+    const mode = document.getElementById('fcModeSelect').value;
+    const baseList = getTrackList();
+
+    if (mode === 'fav') fcDeck = baseList.filter(x => getRecord(x.id).fav);
+    else if (mode === 'hard') fcDeck = baseList.filter(x => getRecord(x.id).status === 'hard');
+    else if (mode === 'unlearned') fcDeck = baseList.filter(x => getRecord(x.id).status === 'unlearned');
+    else if (mode === 'mastered') fcDeck = baseList.filter(x => getRecord(x.id).status === 'mastered');
+    else if (mode === 'random') fcDeck = shuffleArray(baseList);
+    else fcDeck = [...baseList];
+
+    if (fcDeck.length === 0) {
+      fcDeck = [...baseList];
+    }
+    fcIndex = 0;
+    renderFlashcard();
+  }
+
+  function shuffleFlashcards() {
+    fcDeck = shuffleArray(fcDeck);
+    fcIndex = 0;
+    renderFlashcard();
+  }
+
+  function renderFlashcard() {
+    document.getElementById('fcInner').classList.remove('flipped');
+    const item = fcDeck[fcIndex];
+    const rec = getRecord(item.id);
+    const meta = getStatusMeta(rec.status);
+    const mode = document.getElementById('fcModeSelect').value;
+
+    document.getElementById('fcCounter').textContent = `${fcIndex + 1} / ${fcDeck.length}`;
+    document.getElementById('fcFavBtn').textContent = rec.fav ? '⭐ 즐겨찾기됨 (F)' : '☆ 즐겨찾기 (F)';
+    const badge = document.getElementById('fcStatusBadge');
+    badge.className = `status-pill ${meta.cls}`;
+    badge.textContent = meta.label;
+
+    const frontMain = document.getElementById('fcFrontMain');
+    const frontSub = document.getElementById('fcFrontSub');
+
+    if (currentTrack === 'kana') {
+      document.getElementById('fcTypeTag').textContent = `히라가나 · ${item.row}`;
+      if (mode === 'kr_to_kana') {
+        frontMain.textContent = `${item.romaji} [${item.ko}]`;
+        frontSub.textContent = '어떤 히라가나일까요?';
+      } else {
+        frontMain.textContent = item.char;
+        frontSub.textContent = '';
+      }
+      document.getElementById('fcBackEmoji').textContent = item.emoji;
+      document.getElementById('fcBackKana').textContent = item.char;
+      document.getElementById('fcBackSub').textContent = `발음: ${item.romaji} [${item.ko}]`;
+      document.getElementById('fcBackMeaning').textContent = `${item.words[0].emoji} ${item.words[0].jp} (${item.words[0].ko})`;
+      document.getElementById('fcBackMnemonic').textContent = `💡 ${item.phrase}`;
+    } else {
+      document.getElementById('fcTypeTag').textContent = item.type === 'i' ? 'い형용사' : 'な형용사';
+      if (mode === 'kana_with_kanji') {
+        frontMain.textContent = item.kana;
+        frontSub.textContent = `한자: ${item.kanji} [${item.romaji}]`;
+      } else if (mode === 'kr_to_kana') {
+        frontMain.textContent = `${item.emoji} ${item.meaning}`;
+        frontSub.textContent = `[${item.romaji}]`;
+      } else if (mode === 'kanji_to_kana') {
+        frontMain.textContent = item.kanji;
+        frontSub.textContent = '히라가나 읽기와 뜻을 맞춰 보세요';
+      } else {
+        frontMain.textContent = item.kana;
+        frontSub.textContent = `[${item.romaji}]`;
+      }
+      document.getElementById('fcBackEmoji').textContent = item.emoji;
+      document.getElementById('fcBackKana').textContent = item.kana;
+      document.getElementById('fcBackSub').textContent = `아래 한자 표기: ${item.kanji} [${item.romaji}]`;
+      document.getElementById('fcBackMeaning').textContent = item.meaning;
+      document.getElementById('fcBackMnemonic').textContent = `💡 ${item.mnemonic}`;
+    }
+  }
+
+  function flipFlashcard() {
+    document.getElementById('fcInner').classList.toggle('flipped');
+  }
+
+  function speakCurrentFC(e) {
+    if (e) e.stopPropagation();
+    const item = fcDeck[fcIndex];
+    if (item) speakJapanese(currentTrack === 'kana' ? item.char : item.kana);
+  }
+
+  function toggleCurrentFCFav(e) {
+    if (e) e.stopPropagation();
+    const item = fcDeck[fcIndex];
+    const rec = getRecord(item.id);
+    rec.fav = !rec.fav;
+    saveState();
+    renderFlashcard();
+  }
+
+  function markFlashcard(st) {
+    const item = fcDeck[fcIndex];
+    const rec = getRecord(item.id);
+    rec.status = st;
+    if (st === 'mastered') rec.correct++;
+    else rec.wrong++;
+    userState.fcCount++;
+    saveState();
+    moveFlashcard(1);
+  }
+
+  function moveFlashcard(delta) {
+    fcIndex = (fcIndex + delta + fcDeck.length) % fcDeck.length;
+    renderFlashcard();
+  }
+
+  // =========================================================================
+  // 9. 정밀 SVG 획순 애니메이션 & 따라 쓰기 연습 (단어 전체 연속 획순 + 글자별 확대)
+  // =========================================================================
+  let currentStrokeIdx = 0;
+  let currentStrokeCharFocus = 'all';
+  let strokeAnimTimer = null;
+  let strokeStep = 0;
+  let strokePaused = false;
+  let totalStrokesCount = 0;
+  let isDrawing = false;
+
+  function stopStrokeAnimTimer() {
+    if (strokeAnimTimer) {
+      clearTimeout(strokeAnimTimer);
+      strokeAnimTimer = null;
+    }
+  }
+
+  function initStrokeScreen() {
+    const list = getTrackList();
+    if (currentStrokeIdx >= list.length) currentStrokeIdx = 0;
+
+    const sel = document.getElementById('strokeItemSelect');
+    sel.innerHTML = list.map((item, idx) => {
+      const label = currentTrack === 'kana'
+        ? `${idx + 1}. ${item.char} (${item.romaji} [${item.ko}])`
+        : `${item.num}. ${item.kana} (${item.kanji}) - ${item.meaning}`;
+      return `<option value="${idx}" ${idx === currentStrokeIdx ? 'selected' : ''}>${label}</option>`;
+    }).join('');
+
+    setupDrawingCanvas();
+    selectStrokeItem(currentStrokeIdx);
+  }
+
+  function setupDrawingCanvas() {
+    const wrap = document.getElementById('strokeCanvasWrap');
+    const dCanvas = document.getElementById('drawCanvas');
+    const rect = wrap.getBoundingClientRect();
+    dCanvas.width = rect.width || 420;
+    dCanvas.height = rect.height || 220;
+
+    const dCtx = dCanvas.getContext('2d');
+    const getPos = (e) => {
+      const r = dCanvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: (clientX - r.left) * (dCanvas.width / r.width),
+        y: (clientY - r.top) * (dCanvas.height / r.height)
+      };
+    };
+
+    dCanvas.onpointerdown = (e) => {
+      isDrawing = true;
+      const p = getPos(e);
+      dCtx.beginPath();
+      dCtx.moveTo(p.x, p.y);
+      dCtx.lineCap = 'round';
+      dCtx.lineJoin = 'round';
+      dCtx.lineWidth = 6.5;
+      dCtx.strokeStyle = '#1e1b4b';
+    };
+    dCanvas.onpointermove = (e) => {
+      if (!isDrawing) return;
+      const p = getPos(e);
+      dCtx.lineTo(p.x, p.y);
+      dCtx.stroke();
+    };
+    dCanvas.onpointerup = () => { isDrawing = false; };
+    dCanvas.onpointerleave = () => { isDrawing = false; };
+  }
+
+  function selectStrokeItem(idx) {
+    currentStrokeIdx = Number(idx);
+    currentStrokeCharFocus = 'all';
+    const sel = document.getElementById('strokeItemSelect');
+    if (sel) sel.value = currentStrokeIdx;
+
+    const item = getTrackList()[currentStrokeIdx];
+    const rec = getRecord(item.id);
+    document.getElementById('strokeFavBtn').textContent = rec.fav ? '⭐' : '☆';
+
+    const underBox = document.getElementById('strokeUnderBox');
+    if (currentTrack === 'kana') {
+      underBox.innerHTML = `
+        <div style="font-size:0.78rem; color:var(--text-sub); font-weight:700;">로마자 발음 & 연상 키워드</div>
+        <div style="font-size:1.25rem; font-weight:900; color:var(--primary); margin-top:4px;">
+          ${item.char} — ${item.romaji} [${item.ko}] (${item.emoji} ${item.phrase})
+        </div>
+      `;
+    } else {
+      underBox.innerHTML = `
+        <div style="font-size:0.78rem; color:var(--text-sub); font-weight:700;">아래 한자 표기 & 한국어 뜻</div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-top:4px; flex-wrap:wrap;">
+          <span class="jp" lang="ja" style="font-size:1.55rem; font-weight:900; color:var(--text-main);">${item.kanji}</span>
+          <span style="font-size:1.15rem; font-weight:800; color:var(--primary);">${item.emoji} ${item.meaning}</span>
+          <span style="font-size:0.85rem; color:var(--text-sub);">[${item.romaji}]</span>
+        </div>
+      `;
+    }
+
+    renderStrokeBreakdownChips();
+    clearUserDrawing();
+    buildAndPlayStrokes();
+  }
+
+  function renderStrokeBreakdownChips() {
+    const bar = document.getElementById('strokeBreakdownBar');
+    if (currentTrack === 'kana') {
+      bar.innerHTML = '';
+      return;
+    }
+    const item = ADJECTIVES_DB[currentStrokeIdx];
+    const chars = Array.from(item.kana);
+    let html = `
+      <button class="char-step-chip jp ${currentStrokeCharFocus === 'all' ? 'active' : ''}" onclick="setStrokeFocus('all')">
+        전체 단어 (${item.kana})
+      </button>
+    `;
+    chars.forEach((ch, i) => {
+      html += `
+        <button class="char-step-chip jp ${currentStrokeCharFocus === i ? 'active' : ''}" onclick="setStrokeFocus(${i})">
+          ${i + 1}번째: ${ch}
+        </button>
+      `;
+    });
+    bar.innerHTML = html;
+  }
+
+  function setStrokeFocus(focus) {
+    currentStrokeCharFocus = focus;
+    renderStrokeBreakdownChips();
+    clearUserDrawing();
+    buildAndPlayStrokes();
+  }
+
+  function buildAndPlayStrokes() {
+    stopStrokeAnimTimer();
+    const item = getTrackList()[currentStrokeIdx];
+    const allChars = currentTrack === 'kana' ? [item.char] : Array.from(item.kana);
+    const targetChars = (currentTrack === 'adj' && currentStrokeCharFocus !== 'all')
+      ? [allChars[currentStrokeCharFocus]]
+      : allChars;
+
+    const svg = document.getElementById('strokeSvgLayer');
+    const viewW = targetChars.length * 100;
+    svg.setAttribute('viewBox', `0 0 ${viewW} 100`);
+
+    const colors = ['#4f46e5', '#ec4899', '#10b981', '#f59e0b', '#0284c7'];
+    let bgHtml = '';
+    let animHtml = '';
+    let gStrokeIdx = 0;
+
+    targetChars.forEach((ch, cIdx) => {
+      const offsetX = cIdx * 100;
+      const strokes = getKanaStrokes(ch);
+
+      bgHtml += `
+        <g transform="translate(${offsetX}, 0)">
+          <rect x="3" y="3" width="94" height="94" rx="10" fill="none" stroke="#e2e8f0" stroke-width="1.2" />
+          <line x1="50" y1="5" x2="50" y2="95" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="3,3" />
+          <line x1="5" y1="50" x2="95" y2="50" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="3,3" />
+      `;
+      strokes.forEach(d => {
+        bgHtml += `<path d="${d}" fill="none" stroke="#e2e8f0" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" />`;
+      });
+      bgHtml += `</g>`;
+
+      animHtml += `<g transform="translate(${offsetX}, 0)">`;
+      strokes.forEach((d, sIdx) => {
+        const pt = getStrokeStartCoord(d);
+        const col = colors[sIdx % colors.length];
+        animHtml += `
+          <path id="stroke-path-${gStrokeIdx}" d="${d}" fill="none" stroke="${col}" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray: 240; stroke-dashoffset: 240;" />
+          <g id="stroke-num-${gStrokeIdx}" style="opacity: 0.25;">
+            <circle cx="${pt.x}" cy="${pt.y}" r="6.8" fill="${col}" />
+            <text x="${pt.x}" y="${pt.y + 3}" font-size="8.5" fill="#fff" text-anchor="middle" font-weight="bold">${sIdx + 1}</text>
+          </g>
+        `;
+        gStrokeIdx++;
+      });
+      animHtml += `</g>`;
+    });
+
+    totalStrokesCount = gStrokeIdx;
+    svg.innerHTML = bgHtml + animHtml;
+
+    strokeStep = 0;
+    strokePaused = false;
+    document.getElementById('btnStrokePause').textContent = '⏸ 일시정지 (Space)';
+    document.getElementById('strokeCountBadge').textContent = `획순: 0 / 총 ${totalStrokesCount}획`;
+    animateNextStroke();
+  }
+
+  function animateNextStroke() {
+    if (strokePaused) return;
+    if (strokeStep >= totalStrokesCount) {
+      document.getElementById('strokeCountBadge').textContent = `완료 (${totalStrokesCount}/${totalStrokesCount}획)`;
+      return;
+    }
+    const idx = strokeStep;
+    const pEl = document.getElementById(`stroke-path-${idx}`);
+    const nEl = document.getElementById(`stroke-num-${idx}`);
+    document.getElementById('strokeCountBadge').textContent = `진행: ${idx + 1} / 총 ${totalStrokesCount}획`;
+
+    if (nEl) nEl.style.opacity = '1';
+    if (pEl) {
+      pEl.style.transition = 'stroke-dashoffset 0.55s ease-in-out';
+      requestAnimationFrame(() => { pEl.style.strokeDashoffset = '0'; });
+    }
+    strokeStep++;
+    if (strokeStep <= totalStrokesCount) {
+      strokeAnimTimer = setTimeout(animateNextStroke, 620);
+    }
+  }
+
+  function playStrokeAnimation() {
+    if (strokeStep >= totalStrokesCount) buildAndPlayStrokes();
+    else {
+      strokePaused = false;
+      document.getElementById('btnStrokePause').textContent = '⏸ 일시정지 (Space)';
+      animateNextStroke();
+    }
+  }
+
+  function togglePauseStrokeAnimation() {
+    const btn = document.getElementById('btnStrokePause');
+    if (!strokePaused) {
+      strokePaused = true;
+      stopStrokeAnimTimer();
+      btn.textContent = '▶ 계속 재생 (Space)';
+    } else {
+      strokePaused = false;
+      btn.textContent = '⏸ 일시정지 (Space)';
+      if (strokeStep >= totalStrokesCount) buildAndPlayStrokes();
+      else animateNextStroke();
+    }
+  }
+
+  function replayStrokeAnimation() {
+    buildAndPlayStrokes();
+  }
+
+  function clearUserDrawing() {
+    const dCanvas = document.getElementById('drawCanvas');
+    if (!dCanvas) return;
+    dCanvas.getContext('2d').clearRect(0, 0, dCanvas.width, dCanvas.height);
+  }
+
+  function stepStrokeItem(delta) {
+    const list = getTrackList();
+    currentStrokeIdx = (currentStrokeIdx + delta + list.length) % list.length;
+    selectStrokeItem(currentStrokeIdx);
+  }
+
+  function toggleCurrentStrokeFav() {
+    const item = getTrackList()[currentStrokeIdx];
+    const rec = getRecord(item.id);
+    rec.fav = !rec.fav;
+    saveState();
+    document.getElementById('strokeFavBtn').textContent = rec.fav ? '⭐' : '☆';
+  }
+
+  function speakCurrentStrokeItem() {
+    const item = getTrackList()[currentStrokeIdx];
+    speakJapanese(currentTrack === 'kana' ? item.char : item.kana);
+  }
+
+  // =========================================================================
+  // 10. 연상 암기법 화면 & 3지선다 미니 확인 문제
+  // =========================================================================
+  let currentMnemIdx = 0;
+
+  function initMnemonicScreen() {
+    const list = getTrackList();
+    if (currentMnemIdx >= list.length) currentMnemIdx = 0;
+
+    const sel = document.getElementById('mnemItemSelect');
+    sel.innerHTML = list.map((item, idx) => {
+      const label = currentTrack === 'kana'
+        ? `${idx + 1}. ${item.char} (${item.romaji}) - ${item.phrase}`
+        : `${item.num}. ${item.kana} (${item.kanji}) - ${item.meaning}`;
+      return `<option value="${idx}" ${idx === currentMnemIdx ? 'selected' : ''}>${label}</option>`;
+    }).join('');
+    renderMnemonicScreen(currentMnemIdx);
+  }
+
+  function renderMnemonicScreen(idx) {
+    currentMnemIdx = Number(idx);
+    const list = getTrackList();
+    const item = list[currentMnemIdx];
+    const rec = getRecord(item.id);
+    document.getElementById('mnemFavBtn').textContent = rec.fav ? '⭐' : '☆';
+
+    const box = document.getElementById('mnemContentBox');
+    if (currentTrack === 'kana') {
+      box.innerHTML = `
+        <div style="text-align:center;">
+          <div style="display:flex; justify-content:center; align-items:center; gap:16px; margin-bottom:10px;">
+            <span class="jp" lang="ja" style="font-size:3.2rem; font-weight:900; color:var(--primary);">${item.char}</span>
+            <span style="font-size:1.5rem;">↔</span>
+            <span style="font-size:3rem;">${item.emoji}</span>
+          </div>
+          <div style="font-size:1.15rem; font-weight:900; color:var(--primary-dark);">${item.phrase}</div>
+          <div style="font-size:0.9rem; color:var(--text-sub); margin-top:4px;">발음: ${item.romaji} [${item.ko}]</div>
+          <p style="background:#fef3c7; padding:12px; border-radius:12px; font-size:0.9rem; line-height:1.5; margin-top:10px;">${item.story}</p>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:10px;">
+          <button class="btn btn-outline btn-block" onclick="stepMnemonic(-1)">◀ 이전 (←)</button>
+          <button class="btn btn-outline btn-block" onclick="stepMnemonic(1)">다음 (→) ▶</button>
+        </div>
+      `;
+    } else {
+      box.innerHTML = `
+        <div style="text-align:center;">
+          <div style="font-size:2.8rem;">${item.emoji}</div>
+          <div class="jp" lang="ja" style="font-size:2.2rem; font-weight:900; color:var(--primary);">${item.kana}</div>
+          <div class="jp" lang="ja" style="font-size:0.95rem; font-weight:700; color:var(--text-sub);">한자 표기: ${item.kanji} [${item.romaji}]</div>
+          <div style="font-size:1.2rem; font-weight:900; margin-top:4px;">뜻: ${item.meaning}</div>
+          <p style="background:#eef2ff; padding:12px; border-radius:12px; font-size:0.9rem; line-height:1.5; margin-top:10px;">💡 ${item.mnemonic}</p>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:10px;">
+          <button class="btn btn-outline btn-block" onclick="stepMnemonic(-1)">◀ 이전 (←)</button>
+          <button class="btn btn-outline btn-block" onclick="stepMnemonic(1)">다음 (→) ▶</button>
+        </div>
+      `;
+    }
+
+    const others = shuffleArray(list.filter(x => x.id !== item.id)).slice(0, 2);
+    const choices = shuffleArray([item, ...others]);
+    document.getElementById('mnemQuizBox').innerHTML = `
+      <div style="font-weight:800; font-size:0.9rem; margin-bottom:8px;">
+        ✅ 기억 확인 미니 퀴즈: "<span class="jp" lang="ja">${currentTrack === 'kana' ? item.char : item.kana}</span>"의 알맞은 발음·뜻은?
+      </div>
+      <div style="display:grid; gap:8px;">
+        ${choices.map((c, i) => `
+          <button class="quiz-opt-btn" onclick="checkMiniQuiz(this, ${c.id === item.id})">
+            <span>${i + 1}. ${currentTrack === 'kana' ? `${c.romaji} [${c.ko}] (${c.emoji})` : `${c.emoji} ${c.meaning}`}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function checkMiniQuiz(btn, isCorrect) {
+    btn.parentElement.querySelectorAll('.quiz-opt-btn').forEach(b => b.disabled = true);
+    btn.classList.add(isCorrect ? 'correct' : 'wrong');
+    btn.innerHTML += isCorrect ? ' <span>⭕ 정답!</span>' : ' <span>❌ 다시 확인!</span>';
+  }
+
+  function stepMnemonic(delta) {
+    const list = getTrackList();
+    currentMnemIdx = (currentMnemIdx + delta + list.length) % list.length;
+    document.getElementById('mnemItemSelect').value = currentMnemIdx;
+    renderMnemonicScreen(currentMnemIdx);
+  }
+
+  function toggleCurrentMnemFav() {
+    const item = getTrackList()[currentMnemIdx];
+    const rec = getRecord(item.id);
+    rec.fav = !rec.fav;
+    saveState();
+    document.getElementById('mnemFavBtn').textContent = rec.fav ? '⭐' : '☆';
+  }
+
+  function speakCurrentMnemItem() {
+    const item = getTrackList()[currentMnemIdx];
+    speakJapanese(currentTrack === 'kana' ? item.char : item.kana);
+  }
+
+  // =========================================================================
+  // 11. 기초 단어 & 형용사 예문 학습 화면
+  // =========================================================================
+  let currentWordsIdx = 0;
+
+  function initWordsScreen() {
+    const list = getTrackList();
+    if (currentWordsIdx >= list.length) currentWordsIdx = 0;
+
+    const sel = document.getElementById('wordsItemSelect');
+    sel.innerHTML = list.map((item, idx) => {
+      const label = currentTrack === 'kana'
+        ? `${idx + 1}. ${item.char} (${item.romaji}) 포함 기초 단어`
+        : `${item.num}. ${item.kana} (${item.kanji}) 표현 & 예문`;
+      return `<option value="${idx}" ${idx === currentWordsIdx ? 'selected' : ''}>${label}</option>`;
+    }).join('');
+    renderWordsScreen(currentWordsIdx);
+  }
+
+  function renderWordsScreen(idx) {
+    currentWordsIdx = Number(idx);
+    const list = getTrackList();
+    const item = list[currentWordsIdx];
+    const box = document.getElementById('wordsListBox');
+
+    if (currentTrack === 'kana') {
+      box.innerHTML = item.words.map(w => `
+        <div class="card-box">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <span style="font-size:1.8rem; margin-right:8px;">${w.emoji}</span>
+              <strong class="jp" lang="ja" style="font-size:1.45rem; color:var(--primary-dark);">${w.jp}</strong>
+              <span style="font-size:0.85rem; color:var(--text-sub);">[${w.romaji}]</span>
+              <div style="font-size:1rem; font-weight:800; margin-top:4px;">뜻: ${w.ko}</div>
+            </div>
+            <button class="btn btn-primary" onclick="speakJapanese('${w.jp}')">🔊 단어 발음</button>
+          </div>
+          <div style="margin-top:10px; padding:10px; background:#f8fafc; border-radius:10px; border-left:3px solid var(--primary);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <strong class="jp" lang="ja">예문: ${w.exJp}</strong>
+              <button class="btn btn-outline" style="padding:3px 8px; font-size:0.74rem;" onclick="speakJapanese('${w.exJp}')">🔊 예문</button>
+            </div>
+            <div style="font-size:0.84rem; color:var(--text-sub); margin-top:3px;">→ ${w.exKo}</div>
+          </div>
+        </div>
+      `).join('');
+    } else {
+      box.innerHTML = `
+        <div class="card-box">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div class="jp" lang="ja" style="font-size:1.8rem; font-weight:900; color:var(--primary);">${item.kana}</div>
+              <div class="jp" lang="ja" style="font-size:0.95rem; color:var(--text-sub);">한자: ${item.kanji} [${item.romaji}] — ${item.emoji} ${item.meaning}</div>
+            </div>
+            <button class="btn btn-primary" onclick="speakJapanese('${item.kana}')">🔊 발음</button>
+          </div>
+          <div style="margin-top:12px; padding:12px; background:#f8fafc; border-radius:12px; border:1px solid var(--border);">
+            <div class="jp" lang="ja" style="font-weight:800; color:var(--primary-dark);">• 대표 명사구: ${item.wordJp} (${item.wordKr})</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+              <strong class="jp" lang="ja">• 예문: ${item.exJp}</strong>
+              <button class="btn btn-outline" style="padding:3px 8px; font-size:0.74rem;" onclick="speakJapanese('${item.exJp}')">🔊 예문 듣기</button>
+            </div>
+            <div style="font-size:0.85rem; color:var(--text-sub); margin-top:3px;">→ ${item.exKr}</div>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  function stepWordsItem(delta) {
+    const list = getTrackList();
+    currentWordsIdx = (currentWordsIdx + delta + list.length) % list.length;
+    document.getElementById('wordsItemSelect').value = currentWordsIdx;
+    renderWordsScreen(currentWordsIdx);
+  }
+
+  // =========================================================================
+  // 12. 퀴즈 및 미니게임 (게임 A~E + 진도 맞춤 출제)
+  // =========================================================================
+  let currentQuizMode = 'gameA';
+  let quizQuestions = [];
+  let quizIdx = 0;
+  let quizSessionCorrect = 0;
+  let quizSessionWrong = 0;
+  let quizWrongItems = [];
+  let timeAttackTimer = null;
+  let timeLeft = 60;
+
+  function stopTimeAttackTimer() {
+    if (timeAttackTimer) {
+      clearInterval(timeAttackTimer);
+      timeAttackTimer = null;
+    }
+  }
+
+  function buildQuizPool(mode) {
+    const baseList = getTrackList();
+    if (mode === 'gameD_fav') {
+      const favs = baseList.filter(x => getRecord(x.id).fav);
+      return favs.length >= 4 ? favs : baseList;
+    }
+    if (mode === 'gameD_hard') {
+      const hards = baseList.filter(x => getRecord(x.id).status === 'hard' || getRecord(x.id).wrong > 0);
+      return hards.length >= 4 ? hards : baseList;
+    }
+    const adaptive = document.getElementById('chkAdaptiveQuiz')?.checked;
+    if (adaptive) {
+      const studied = baseList.filter(x => getRecord(x.id).status !== 'unlearned');
+      if (studied.length >= 6) return studied;
+      return baseList.slice(0, 15);
+    }
+    return baseList;
+  }
+
+  function startQuizMode(mode, btnEl) {
+    stopTimeAttackTimer();
+    currentQuizMode = mode;
+    if (btnEl) {
+      btnEl.parentElement.querySelectorAll('.tab-chip').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+    }
+
+    const pool = buildQuizPool(mode);
+    quizIdx = 0;
+    quizSessionCorrect = 0;
+    quizSessionWrong = 0;
+    quizWrongItems = [];
+
+    if (mode === 'gameC') {
+      quizQuestions = shuffleArray([...pool, ...pool]).slice(0, 35);
+      timeLeft = 60;
+      timeAttackTimer = setInterval(() => {
+        timeLeft--;
+        const tEl = document.getElementById('taTimerDisplay');
+        if (tEl) tEl.textContent = `⏱️ ${timeLeft}초`;
+        if (timeLeft <= 0) {
+          stopTimeAttackTimer();
+          renderQuizResult();
+        }
+      }, 1000);
+    } else {
+      quizQuestions = shuffleArray(pool).slice(0, 10);
+    }
+
+    renderQuizQuestion();
+  }
+
+  function renderQuizQuestion() {
+    if (quizIdx >= quizQuestions.length) {
+      stopTimeAttackTimer();
+      renderQuizResult();
+      return;
+    }
+
+    const q = quizQuestions[quizIdx];
+    const baseList = getTrackList();
+    const distractors = shuffleArray(baseList.filter(x => x.id !== q.id)).slice(0, 3);
+    const options = shuffleArray([q, ...distractors]);
+    const area = document.getElementById('quizPlayArea');
+
+    const askKana = currentQuizMode === 'gameA';
+    let promptTitle = '';
+    let promptMain = '';
+
+    if (currentTrack === 'kana') {
+      promptTitle = askKana ? '다음 발음에 알맞은 히라가나를 고르세요' : '다음 히라가나의 알맞은 발음을 고르세요';
+      promptMain = askKana ? `${q.romaji} [${q.ko}]` : `<span class="jp" lang="ja">${q.char}</span>`;
+    } else {
+      promptTitle = askKana ? '다음 한국어 뜻에 알맞은 히라가나 형용사는?' : '다음 히라가나 형용사의 알맞은 뜻은?';
+      promptMain = askKana
+        ? `${q.emoji} ${q.meaning}`
+        : `<div class="jp" lang="ja">${q.kana}</div><div class="jp" lang="ja" style="font-size:0.9rem; color:var(--text-sub); margin-top:4px;">참고 한자: ${q.kanji}</div>`;
+    }
+
+    area.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-size:0.84rem; font-weight:800; color:var(--text-sub);">
+        <span>문제 ${quizIdx + 1} ${currentQuizMode === 'gameC' ? '' : `/ ${quizQuestions.length}`}</span>
+        ${currentQuizMode === 'gameC' ? `<span id="taTimerDisplay" style="color:var(--danger);">⏱️ ${timeLeft}초</span>` : ''}
+        <span>⭕ ${quizSessionCorrect}  ❌ ${quizSessionWrong} (${quizSessionCorrect * 10}점)</span>
+      </div>
+
+      <div style="text-align:center; padding:16px 10px; background:#f8fafc; border-radius:14px; border:1px solid var(--border);">
+        <div style="font-size:0.8rem; color:var(--text-sub); margin-bottom:6px;">${promptTitle}</div>
+        <div style="font-size:2.1rem; font-weight:900; color:var(--primary);">${promptMain}</div>
+      </div>
+
+      <div class="quiz-options" id="currentQuizOptions">
+        ${options.map((opt, idx) => {
+          let label = '';
+          if (currentTrack === 'kana') {
+            label = askKana ? opt.char : `${opt.romaji} [${opt.ko}]`;
+          } else {
+            label = askKana ? `${opt.kana} <small style="color:var(--text-sub);">(${opt.kanji})</small>` : `${opt.emoji} ${opt.meaning}`;
+          }
+          return `
+            <button class="quiz-opt-btn jp" lang="ja" data-opt-index="${idx + 1}" onclick="submitQuizAnswer(this, ${opt.id === q.id}, '${q.id}')">
+              <span><strong>${idx + 1}.</strong> ${label}</span>
+            </button>
+          `;
+        }).join('')}
+      </div>
+    `;
+  }
+
+  function submitQuizAnswer(btn, isCorrect, qId) {
+    btn.parentElement.querySelectorAll('.quiz-opt-btn').forEach(b => b.disabled = true);
+    const rec = getRecord(qId);
+    userState.quizTotal++;
+
+    if (isCorrect) {
+      btn.classList.add('correct');
+      quizSessionCorrect++;
+      userState.quizCorrect++;
+      rec.correct++;
+    } else {
+      btn.classList.add('wrong');
+      quizSessionWrong++;
+      rec.wrong++;
+      rec.status = 'hard';
+      const item = getTrackList().find(x => x.id === qId);
+      if (item && !quizWrongItems.some(w => w.id === item.id)) quizWrongItems.push(item);
+    }
+    saveState();
+
+    setTimeout(() => {
+      quizIdx++;
+      renderQuizQuestion();
+    }, 600);
+  }
+
+  // 게임 E: 결과 리포트 화면
+  function renderQuizResult() {
+    const total = quizSessionCorrect + quizSessionWrong;
+    const rate = total > 0 ? Math.round((quizSessionCorrect / total) * 100) : 0;
+    const score = quizSessionCorrect * 10;
+    if (currentQuizMode === 'gameC' && score > userState.bestTimeAttack) {
+      userState.bestTimeAttack = score;
+      saveState();
+    }
+
+    const area = document.getElementById('quizPlayArea');
+    area.innerHTML = `
+      <div style="text-align:center; padding:10px;">
+        <div style="font-size:2.6rem;">🏆</div>
+        <h3 style="margin:6px 0;">게임 E: 학습 결과 리포트</h3>
+        <div style="font-size:1.15rem; font-weight:900; color:var(--primary); margin-bottom:12px;">
+          ${score}점 (정답 ${quizSessionCorrect}개 / 오답 ${quizSessionWrong}개 · 정답률 ${rate}%)
+        </div>
+        ${quizWrongItems.length > 0 ? `
+          <div style="text-align:left; background:#fffbeb; padding:12px; border-radius:12px; border:1px solid #fcd34d; margin-bottom:14px;">
+            <div style="font-weight:800; color:#b45309; margin-bottom:6px;">🔥 다시 학습해야 할 항목 (클릭 시 상세 학습)</div>
+            ${quizWrongItems.map(w => {
+              const idx = getTrackList().findIndex(x => x.id === w.id);
+              const title = currentTrack === 'kana' ? `${w.char} (${w.romaji} [${w.ko}])` : `${w.kana} (${w.kanji}) — ${w.meaning}`;
+              return `<div class="jp" lang="ja" style="padding:6px 0; border-bottom:1px dashed #fde68a; cursor:pointer; font-weight:700;" onclick="openItemDetailModal('${currentTrack}', ${idx})">${title}</div>`;
+            }).join('')}
+          </div>
+        ` : `<p style="color:var(--success); font-weight:800;">완벽합니다! 틀린 문제가 하나도 없습니다!</p>`}
+        <button class="btn btn-primary btn-block" onclick="startQuizMode('${currentQuizMode}')">🔄 다시 도전하기</button>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // 13. 이미지 기반 히라가나 맞히기 (방식 A: 타일 선택 / 방식 B: 로마자 변환 입력기)
+  // =========================================================================
+  let imgInputMode = 'tile';
+  let currentImgQuestion = null;
+  let selectedImgTiles = [];
+
+  const ROMAJI_MAP = {
+    a:"あ", i:"い", u:"う", e:"え", o:"お",
+    ka:"か", ki:"き", ku:"く", ke:"け", ko:"こ",
+    sa:"さ", shi:"し", si:"し", su:"す", se:"せ", so:"そ",
+    ta:"た", chi:"ち", ti:"ち", tsu:"つ", tu:"つ", te:"て", to:"と",
+    na:"な", ni:"に", nu:"ぬ", ne:"ね", no:"の",
+    ha:"は", hi:"ひ", fu:"ふ", hu:"ふ", he:"へ", ho:"ほ",
+    ma:"ま", mi:"み", mu:"む", me:"め", mo:"も",
+    ya:"や", yu:"ゆ", yo:"よ",
+    ra:"ら", ri:"り", ru:"る", re:"れ", ro:"ろ",
+    wa:"わ", wo:"を", nn:"ん", n:"ん",
+    ga:"が", gi:"ぎ", gu:"ぐ", ge:"げ", go:"ご",
+    za:"ざ", ji:"じ", zu:"ず", ze:"ぜ", zo:"ぞ",
+    da:"だ", de:"で", do:"ど",
+    ba:"ば", bi:"び", bu:"ぶ", be:"べ", bo:"ぼ",
+    pa:"ぱ", pi:"ぴ", pu:"ぷ", pe:"ぺ", po:"ぽ",
+    jou:"じょう", shizuka:"しずか"
+  };
+
+  function convertRomajiToKana(str) {
+    let s = str.trim().toLowerCase();
+    const keys = Object.keys(ROMAJI_MAP).sort((a, b) => b.length - a.length);
+    for (const k of keys) {
+      s = s.split(k).join(ROMAJI_MAP[k]);
+    }
+    return s;
+  }
+
+  function initImageGame() {
+    nextImageGameQuestion();
+  }
+
+  function setImgInputMode(mode) {
+    imgInputMode = mode;
+    document.getElementById('btnImgModeTile').classList.toggle('active', mode === 'tile');
+    document.getElementById('btnImgModeKey').classList.toggle('active', mode === 'keyboard');
+    document.getElementById('imgTileModeUI').style.display = mode === 'tile' ? 'block' : 'none';
+    document.getElementById('imgKeyModeUI').style.display = mode === 'keyboard' ? 'block' : 'none';
+  }
+
+  function nextImageGameQuestion() {
+    const poolType = document.getElementById('imgPoolSelect').value;
+    const useNoun = poolType === 'noun20' || (poolType === 'current' && currentTrack === 'kana');
+
+    if (useNoun) {
+      const q = IMAGE_NOUN_DB[Math.floor(Math.random() * IMAGE_NOUN_DB.length)];
+      currentImgQuestion = { emoji: q.emoji, prompt: q.ko, kana: q.kana, hint: q.hint, valid: new Set([q.kana, ...q.altAnswers]) };
+    } else {
+      const a = ADJECTIVES_DB[Math.floor(Math.random() * ADJECTIVES_DB.length)];
+      const stemKana = a.kana.replace(/だ$/, '');
+      currentImgQuestion = {
+        id: a.id,
+        emoji: a.emoji,
+        prompt: a.meaning,
+        kana: a.kana,
+        hint: `아래 참고 한자: ${a.kanji} (${a.type === 'i' ? 'い형용사' : 'な형용사'})`,
+        valid: new Set([a.kana, a.kanji, stemKana, ...(a.altAnswers || [])])
+      };
+    }
+
+    selectedImgTiles = [];
+    document.getElementById('imgFeedbackBox').style.display = 'none';
+    document.getElementById('imgKeyboardInput').value = '';
+    document.getElementById('imgGameEmoji').textContent = currentImgQuestion.emoji;
+    document.getElementById('imgGamePrompt').textContent = `뜻: ${currentImgQuestion.prompt}`;
+    document.getElementById('imgGameHint').textContent = currentImgQuestion.hint;
+
+    renderImgTiles();
+  }
+
+  function renderImgTiles() {
+    const chars = Array.from(currentImgQuestion.kana);
+    const allKana = HIRAGANA_DB.map(k => k.char);
+    const extras = shuffleArray(allKana.filter(c => !chars.includes(c))).slice(0, Math.max(4, 10 - chars.length));
+    const pool = shuffleArray([...chars, ...extras]);
+
+    document.getElementById('imgAnswerSlots').innerHTML = chars.map((_, i) => `<div class="slot-box">${selectedImgTiles[i] || ''}</div>`).join('');
+    document.getElementById('imgKanaPool').innerHTML = pool.map(ch => `<button class="kana-key" onclick="pickImgTile('${ch}')">${ch}</button>`).join('');
+  }
+
+  function pickImgTile(ch) {
+    const maxLen = Array.from(currentImgQuestion.kana).length;
+    if (selectedImgTiles.length < maxLen) {
+      selectedImgTiles.push(ch);
+      document.getElementById('imgAnswerSlots').innerHTML = Array.from(currentImgQuestion.kana).map((_, i) => `<div class="slot-box">${selectedImgTiles[i] || ''}</div>`).join('');
+    }
+  }
+
+  function popImgTile() {
+    selectedImgTiles.pop();
+    document.getElementById('imgAnswerSlots').innerHTML = Array.from(currentImgQuestion.kana).map((_, i) => `<div class="slot-box">${selectedImgTiles[i] || ''}</div>`).join('');
+  }
+
+  function resetImgTiles() {
+    selectedImgTiles = [];
+    document.getElementById('imgAnswerSlots').innerHTML = Array.from(currentImgQuestion.kana).map(() => `<div class="slot-box"></div>`).join('');
+  }
+
+  function convertRomajiInput() {
+    const el = document.getElementById('imgKeyboardInput');
+    el.value = convertRomajiToKana(el.value);
+  }
+
+  function checkImgAnswer() {
+    const rawAns = imgInputMode === 'tile'
+      ? selectedImgTiles.join('').trim()
+      : convertRomajiToKana(document.getElementById('imgKeyboardInput').value.trim());
+
+    const isCorrect = currentImgQuestion.valid.has(rawAns);
+    const fb = document.getElementById('imgFeedbackBox');
+    fb.style.display = 'block';
+
+    if (currentImgQuestion.id) {
+      const rec = getRecord(currentImgQuestion.id);
+      if (isCorrect) { rec.correct++; rec.status = 'mastered'; }
+      else { rec.wrong++; rec.status = 'hard'; }
+      saveState();
+    }
+
+    speakJapanese(currentImgQuestion.kana);
+    if (isCorrect) {
+      fb.style.background = 'var(--success-bg)';
+      fb.style.color = '#065f46';
+      fb.innerHTML = `⭕ 정답입니다! <strong class="jp" lang="ja">${currentImgQuestion.kana}</strong> — ${currentImgQuestion.prompt}`;
+    } else {
+      fb.style.background = 'var(--danger-bg)';
+      fb.style.color = '#991b1b';
+      fb.innerHTML = `❌ 아쉬워요! 올바른 답은 <strong class="jp" lang="ja">${currentImgQuestion.kana}</strong> (${currentImgQuestion.prompt}) 입니다.`;
+    }
+  }
+
+  // =========================================================================
+  // 14. 학습 현황 & 즐겨찾기 단어장 화면
+  // =========================================================================
+  function renderStatsScreen() {
+    const list = getTrackList();
+    document.getElementById('statTrackHeading').textContent =
+      currentTrack === 'kana' ? '📊 히라가나 50음도 (46자) 학습 통계' : '📊 필수 형용사 60선 학습 통계';
+
+    let mastered = 0, hard = 0, unlearned = 0, fav = 0;
+    list.forEach(x => {
+      const r = getRecord(x.id);
+      if (r.status === 'mastered') mastered++;
+      else if (r.status === 'hard') hard++;
+      else unlearned++;
+      if (r.fav) fav++;
+    });
+
+    document.getElementById('statMasterCount').textContent = `${mastered}개`;
+    document.getElementById('statFavCount').textContent = `${fav}개`;
+    document.getElementById('statHardCount').textContent = `${hard}개`;
+    document.getElementById('statUnlearnedCount').textContent = `${unlearned}개`;
+
+    const qRate = userState.quizTotal > 0 ? Math.round((userState.quizCorrect / userState.quizTotal) * 100) : 0;
+    document.getElementById('statQuizSummary').innerHTML = `
+      • 플래시카드 누적 학습: <strong>${userState.fcCount}회</strong><br>
+      • 퀴즈 누적 정답률: <strong>${qRate}%</strong> (${userState.quizCorrect}/${userState.quizTotal}문제)<br>
+      • 60초 타임어택 최고 기록: <strong>${userState.bestTimeAttack}점</strong>
+    `;
+
+    // 즐겨찾기 통합 목록
+    const allFavs = [
+      ...HIRAGANA_DB.map((k, idx) => ({ ...k, track: 'kana', idx, title: `${k.char} (${k.romaji} [${k.ko}])` })),
+      ...ADJECTIVES_DB.map((a, idx) => ({ ...a, track: 'adj', idx, title: `${a.kana} (${a.kanji}) — ${a.meaning}` }))
+    ].filter(x => getRecord(x.id).fav);
+
+    const favEl = document.getElementById('statFavList');
+    if (allFavs.length === 0) {
+      favEl.innerHTML = `<div style="color:var(--text-sub);">아직 ⭐ 즐겨찾기한 항목이 없습니다.</div>`;
+    } else {
+      favEl.innerHTML = allFavs.map(f => `
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--border); cursor:pointer;" onclick="openItemDetailModal('${f.track}', ${f.idx})">
+          <span class="jp" lang="ja"><strong>${f.title}</strong></span>
+          <span class="type-tag">${f.track === 'kana' ? '50음도' : '형용사'}</span>
+        </div>
+      `).join('');
+    }
+
+    // 자주 틀리는 항목 목록
+    const weakItems = list
+      .map((item, idx) => ({ item, idx, rec: getRecord(item.id) }))
+      .filter(x => x.rec.status === 'hard' || x.rec.wrong > 0)
+      .sort((a, b) => b.rec.wrong - a.rec.wrong);
+
+    const weakEl = document.getElementById('statWeakList');
+    if (weakItems.length === 0) {
+      weakEl.innerHTML = `<div style="color:var(--text-sub);">아직 오답이나 '어려움'으로 표시된 항목이 없습니다.</div>`;
+    } else {
+      weakEl.innerHTML = weakItems.map(({ item, idx, rec }) => {
+        const label = currentTrack === 'kana' ? `${item.char} (${item.romaji} [${item.ko}])` : `${item.kana} (${item.kanji}) — ${item.meaning}`;
+        return `
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--border); cursor:pointer;" onclick="openItemDetailModal('${currentTrack}', ${idx})">
+            <span class="jp" lang="ja"><strong>${label}</strong></span>
+            <span class="status-pill status-hard">오답 ${rec.wrong}회</span>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  function startFavReview() {
+    navigate('flashcard');
+    document.getElementById('fcModeSelect').value = 'fav';
+    initFlashcards();
+  }
+
+  function resetAllUserData() {
+    if (!confirm('모든 히라가나·형용사 학습 상태와 즐겨찾기, 퀴즈 기록을 초기화하시겠습니까?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    userState = { records: {}, fcCount: 0, quizTotal: 0, quizCorrect: 0, bestTimeAttack: 0 };
+    loadState();
+    saveState();
+    renderStatsScreen();
+    alert('모든 기록이 초기화되었습니다.');
+  }
+
+  // =========================================================================
+  // 15. 키보드 단축키 모달 및 전역 리스너
+  // =========================================================================
+  function openShortcutModal() {
+    document.getElementById('shortcutModal').classList.add('open');
+  }
+
+  function closeShortcutModal(e) {
+    if (!e || e.target.id === 'shortcutModal') {
+      document.getElementById('shortcutModal').classList.remove('open');
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+    if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
+
+    const detailOpen = document.getElementById('detailModal').classList.contains('open');
+    const shortcutOpen = document.getElementById('shortcutModal').classList.contains('open');
+
+    if (e.key === 'Escape') {
+      if (shortcutOpen) closeShortcutModal();
+      if (detailOpen) closeDetailModal();
+      return;
+    }
+
+    if (detailOpen) {
+      if (e.key.toLowerCase() === 's') { e.preventDefault(); speakFromModal(); }
+      if (e.key.toLowerCase() === 'f') { e.preventDefault(); toggleFavFromModal(); }
+      return;
+    }
+
+    if (activeScreen === 'flashcard') {
+      if (e.code === 'Space') { e.preventDefault(); flipFlashcard(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); moveFlashcard(1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); moveFlashcard(-1); }
+      else if (e.key.toLowerCase() === 's') { e.preventDefault(); speakCurrentFC(); }
+      else if (e.key.toLowerCase() === 'f') { e.preventDefault(); toggleCurrentFCFav(); }
+      else if (e.key === '1') { e.preventDefault(); markFlashcard('hard'); }
+      else if (e.key === '2' || e.key.toLowerCase() === 'm') { e.preventDefault(); markFlashcard('mastered'); }
+      else if (e.key.toLowerCase() === 'r') { e.preventDefault(); shuffleFlashcards(); }
+    } else if (activeScreen === 'stroke') {
+      if (e.code === 'Space') { e.preventDefault(); togglePauseStrokeAnimation(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); stepStrokeItem(1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); stepStrokeItem(-1); }
+      else if (e.key.toLowerCase() === 'c') { e.preventDefault(); clearUserDrawing(); }
+      else if (e.key.toLowerCase() === 's') { e.preventDefault(); speakCurrentStrokeItem(); }
+      else if (e.key.toLowerCase() === 'f') { e.preventDefault(); toggleCurrentStrokeFav(); }
+    } else if (activeScreen === 'mnemonic') {
+      if (e.key === 'ArrowRight') { e.preventDefault(); stepMnemonic(1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); stepMnemonic(-1); }
+      else if (e.key.toLowerCase() === 's') { e.preventDefault(); speakCurrentMnemItem(); }
+      else if (e.key.toLowerCase() === 'f') { e.preventDefault(); toggleCurrentMnemFav(); }
+    } else if (activeScreen === 'words') {
+      if (e.key === 'ArrowRight') { e.preventDefault(); stepWordsItem(1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); stepWordsItem(-1); }
+    } else if (activeScreen === 'quiz') {
+      if (['1', '2', '3', '4'].includes(e.key)) {
+        const optBtn = document.querySelector(`#currentQuizOptions .quiz-opt-btn[data-opt-index="${e.key}"]`);
+        if (optBtn && !optBtn.disabled) { e.preventDefault(); optBtn.click(); }
+      } else if (e.key.toLowerCase() === 's') {
+        const q = quizQuestions[quizIdx];
+        if (q) { e.preventDefault(); speakJapanese(currentTrack === 'kana' ? q.char : q.kana); }
+      }
+    } else if (activeScreen === 'imagegame') {
+      if (e.key === 'ArrowRight') { e.preventDefault(); nextImageGameQuestion(); }
+    }
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    loadState();
+    updateGlobalProgressUI();
+  });
+</script>
+</body>
+</html>
